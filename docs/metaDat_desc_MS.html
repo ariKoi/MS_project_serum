@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-02-05">
+<meta name="dcterms.date" content="2025-02-27">
 
 <title>MS Project Serum - Data Description/Processing - MS Meta Data &amp; Lipids</title>
 <style>
@@ -67,9 +67,43 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<link href="site_libs/jquery-sparkline-2.1.2/jquery.sparkline.css" rel="stylesheet">
+<script src="site_libs/jquery-sparkline-2.1.2/jquery.sparkline.js"></script>
+<script src="site_libs/sparkline-binding-2.0/sparkline.js"></script>
 <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -131,6 +165,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Processing &amp; EDA</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modeling_MS.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modeling</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -143,19 +183,18 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Clinical Data (With Selected Lipids)</h2>
    
   <ul>
-  <li><a href="#notes-quick-descriptives" id="toc-notes-quick-descriptives" class="nav-link active" data-scroll-target="#notes-quick-descriptives">Notes &amp; Quick Descriptives</a></li>
+  <li><a href="#data-summaries" id="toc-data-summaries" class="nav-link active" data-scroll-target="#data-summaries">Data Summaries</a></li>
+  <li><a href="#lipid-concentrations-view" id="toc-lipid-concentrations-view" class="nav-link" data-scroll-target="#lipid-concentrations-view">Lipid Concentrations View</a></li>
+  <li><a href="#known-lipids" id="toc-known-lipids" class="nav-link" data-scroll-target="#known-lipids">Known Lipids</a></li>
+  <li><a href="#notes-quick-descriptives" id="toc-notes-quick-descriptives" class="nav-link" data-scroll-target="#notes-quick-descriptives">Notes &amp; Quick Descriptives</a></li>
   <li><a href="#multiple-imputation" id="toc-multiple-imputation" class="nav-link" data-scroll-target="#multiple-imputation">Multiple Imputation</a></li>
   <li><a href="#data-descriptions-eda" id="toc-data-descriptions-eda" class="nav-link" data-scroll-target="#data-descriptions-eda">Data Descriptions &amp; EDA</a></li>
-  <li><a href="#age-vs-lipids" id="toc-age-vs-lipids" class="nav-link" data-scroll-target="#age-vs-lipids"><span class="header-section-number">1</span> Age Vs Lipids</a>
-  <ul class="collapse">
-  <li><a href="#correlation-tests" id="toc-correlation-tests" class="nav-link" data-scroll-target="#correlation-tests">Correlation Tests</a></li>
-  </ul></li>
-  <li><a href="#disease-severity-groups-vs-selected-lipids" id="toc-disease-severity-groups-vs-selected-lipids" class="nav-link" data-scroll-target="#disease-severity-groups-vs-selected-lipids"><span class="header-section-number">2</span> Disease Severity Groups Vs Selected Lipids</a></li>
+  <li><a href="#disease-severity-groups-vs-selected-lipids" id="toc-disease-severity-groups-vs-selected-lipids" class="nav-link" data-scroll-target="#disease-severity-groups-vs-selected-lipids">Disease Severity Groups Vs Selected Lipids</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./metaDat_desc_MS.html">Sections</a></li><li class="breadcrumb-item"><a href="./metaDat_desc_MS.html">Processing &amp; EDA</a></li></ol></nav>
 <div class="quarto-title">
@@ -170,7 +209,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 5, 2025</p>
+      <p class="date">February 27, 2025</p>
     </div>
   </div>
   
@@ -182,24 +221,1241 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="data-summaries" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="data-summaries">Data Summaries</h2>
+<div class="cell">
+<div class="cell-output-display">
+<span id="htmlwidget-91d7a4fdf383730ca001" class="sparkline html-widget"></span>
+<script type="application/json" data-for="htmlwidget-91d7a4fdf383730ca001">{"x":{"values":0,"options":{"height":20,"width":60},"width":60,"height":20},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset column-screen page-columns page-full">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Continuous</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Categorical</a></li></ul>
+<div class="tab-content column-screen">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<pre data-html=""><code><div id="lytxuxbpvb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lytxuxbpvb table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#lytxuxbpvb thead, #lytxuxbpvb tbody, #lytxuxbpvb tfoot, #lytxuxbpvb tr, #lytxuxbpvb td, #lytxuxbpvb th {
+  border-style: none;
+}
+
+#lytxuxbpvb p {
+  margin: 0;
+  padding: 0;
+}
+
+#lytxuxbpvb .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#lytxuxbpvb .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#lytxuxbpvb .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#lytxuxbpvb .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#lytxuxbpvb .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#lytxuxbpvb .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lytxuxbpvb .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#lytxuxbpvb .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#lytxuxbpvb .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#lytxuxbpvb .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#lytxuxbpvb .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#lytxuxbpvb .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#lytxuxbpvb .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#lytxuxbpvb .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#lytxuxbpvb .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#lytxuxbpvb .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#lytxuxbpvb .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#lytxuxbpvb .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#lytxuxbpvb .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lytxuxbpvb .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#lytxuxbpvb .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#lytxuxbpvb .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#lytxuxbpvb .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lytxuxbpvb .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#lytxuxbpvb .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#lytxuxbpvb .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lytxuxbpvb .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lytxuxbpvb .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#lytxuxbpvb .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lytxuxbpvb .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#lytxuxbpvb .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lytxuxbpvb .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#lytxuxbpvb .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lytxuxbpvb .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#lytxuxbpvb .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lytxuxbpvb .gt_left {
+  text-align: left;
+}
+
+#lytxuxbpvb .gt_center {
+  text-align: center;
+}
+
+#lytxuxbpvb .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#lytxuxbpvb .gt_font_normal {
+  font-weight: normal;
+}
+
+#lytxuxbpvb .gt_font_bold {
+  font-weight: bold;
+}
+
+#lytxuxbpvb .gt_font_italic {
+  font-style: italic;
+}
+
+#lytxuxbpvb .gt_super {
+  font-size: 65%;
+}
+
+#lytxuxbpvb .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#lytxuxbpvb .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#lytxuxbpvb .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#lytxuxbpvb .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#lytxuxbpvb .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#lytxuxbpvb .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#lytxuxbpvb .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" style="table-layout: fixed;" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <colgroup>
+    <col>
+    <col>
+    <col>
+    <col>
+    <col>
+    <col>
+    <col>
+    <col>
+    <col>
+    <col>
+    <col style="width:220px;">
+    <col>
+  </colgroup>
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="12" class="gt_heading gt_title gt_font_normal" style=""><strong><code>metaData</code> Descriptives</strong></td>
+    </tr>
+    <tr class="gt_heading">
+      <td colspan="12" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">5 Continous Variables of 9 Variables, 193 Observations</td>
+    </tr>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Variable">Variable</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Label">Label</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Units">Units</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center;" scope="col" id="n">n</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center;" scope="col" id="Missing">Missing</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center;" scope="col" id="Distinct">Distinct</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center;" scope="col" id="Info">Info</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center;" scope="col" id="Mean">Mean</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center;" scope="col" id="pMedian">pMedian</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center;" scope="col" id="Gini <span style=&quot;text-decoration: overline&quot;>|Δ|</span>">Gini <span style="text-decoration: overline">|Δ|</span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id=" "> </th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Quantiles<br><font size=&quot;1&quot;> .05 </font><font size=&quot;2&quot;> .10 </font><font size=&quot;3&quot;> .25 </font><font size=&quot;4&quot;><strong> .50 </strong></font><font size=&quot;3&quot;> .75 </font><font size=&quot;2&quot;> .90 </font><font size=&quot;1&quot;> .95 </font>">Quantiles<br><font size="1"> .05 </font><font size="2"> .10 </font><font size="3"> .25 </font><font size="4"><strong> .50 </strong></font><font size="3"> .75 </font><font size="2"> .90 </font><font size="1"> .95 </font></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="Variable" class="gt_row gt_left">Run_Order</td>
+<td headers="Label" class="gt_row gt_left" style="font-size: small;"></td>
+<td headers="Units" class="gt_row gt_left" style="font-family: arial; font-size: small;"></td>
+<td headers="n" class="gt_row gt_right">193</td>
+<td headers="Missing" class="gt_row gt_right">0</td>
+<td headers="Distinct" class="gt_row gt_right">193</td>
+<td headers="Info" class="gt_row gt_right">1.000</td>
+<td headers="Mean" class="gt_row gt_right">113.7</td>
+<td headers="pMedian" class="gt_row gt_right">113.5</td>
+<td headers="Gmd" class="gt_row gt_right">74.67</td>
+<td headers=" " class="gt_row gt_right"><span id="htmlwidget-0b178c24cf4ffa084cd9" class="sparkline html-widget"></span>
+<script type="application/json" data-for="htmlwidget-0b178c24cf4ffa084cd9">{"x":{"values":[3,2,1,2,2,2,1,2,2,2,1,2,2,2,1,2,2,2,2,1,2,2,2,1,1,1,2,2,2,1,2,2,2,1,2,2,2,1,2,2,2,1,2,2,2,1,2,2,2,1,2,2,2,1,2,2,2,1,2,2,1,2,2,2,1,2,2,2,1,2,2,2,1,2,2,2,1,2,2,2,1,2,2,2,1,2,2,2,1,2,2,2,1,2,2,2,1,2,2,2,1,2,2,1,2,2,2,1,3,2],"options":{"type":"bar","chartRangeMin":0,"zeroColor":"lightgray","barWidth":1,"barSpacing":1,"tooltipFormatter":"function(sparkline, options, field){\n       debugger;\n       return [\"Q<sub>0.01<\\/sub>:4<br>Bin: [2, 6)<br>Observed:<br>2<br>4<br>5<br>Proportion:0.0155 (n=3)<br>Cumulative:0.0155\",\"Bin: [6, 8)<br>Observed:<br>6<br>7<br>Proportion:0.0104 (n=2)<br>Cumulative:0.0259\",\"Bin: [8, 10)<br>Observed:<br>8<br>Proportion:0.0052 (n=1)<br>Cumulative:0.0311\",\"Bin: [10, 12)<br>Observed:<br>10<br>11<br>Proportion:0.0104 (n=2)<br>Cumulative:0.0415\",\"Bin: [12, 14)<br>Observed:<br>12<br>13<br>Proportion:0.0104 (n=2)<br>Cumulative:0.0518\",\"Bin: [14, 16)<br>Observed:<br>14<br>15<br>Proportion:0.0104 (n=2)<br>Cumulative:0.0622\",\"Bin: [16, 18)<br>Observed:<br>16<br>Proportion:0.0052 (n=1)<br>Cumulative:0.0674\",\"Bin: [18, 20)<br>Observed:<br>18<br>19<br>Proportion:0.0104 (n=2)<br>Cumulative:0.0777\",\"Bin: [20, 22)<br>Observed:<br>20<br>21<br>Proportion:0.0104 (n=2)<br>Cumulative:0.0881\",\"Bin: [22, 24)<br>Observed:<br>22<br>23<br>Proportion:0.0104 (n=2)<br>Cumulative:0.0984\",\"Bin: [24, 26)<br>Observed:<br>24<br>Proportion:0.0052 (n=1)<br>Cumulative:0.1036\",\"Bin: [26, 28)<br>Observed:<br>26<br>27<br>Proportion:0.0104 (n=2)<br>Cumulative:0.114\",\"Bin: [28, 30)<br>Observed:<br>28<br>29<br>Proportion:0.0104 (n=2)<br>Cumulative:0.1244\",\"Bin: [30, 32)<br>Observed:<br>30<br>31<br>Proportion:0.0104 (n=2)<br>Cumulative:0.1347\",\"Bin: [32, 34)<br>Observed:<br>32<br>Proportion:0.0052 (n=1)<br>Cumulative:0.1399\",\"Bin: [34, 36)<br>Observed:<br>34<br>35<br>Proportion:0.0104 (n=2)<br>Cumulative:0.1503\",\"Bin: [36, 38)<br>Observed:<br>36<br>37<br>Proportion:0.0104 (n=2)<br>Cumulative:0.1606\",\"Bin: [38, 40)<br>Observed:<br>38<br>39<br>Proportion:0.0104 (n=2)<br>Cumulative:0.171\",\"Bin: [40, 42)<br>Observed:<br>40<br>41<br>Proportion:0.0104 (n=2)<br>Cumulative:0.1813\",\"Bin: [42, 44)<br>Observed:<br>42<br>Proportion:0.0052 (n=1)<br>Cumulative:0.1865\",\"Bin: [44, 46)<br>Observed:<br>44<br>45<br>Proportion:0.0104 (n=2)<br>Cumulative:0.1969\",\"Bin: [46, 48)<br>Observed:<br>46<br>47<br>Proportion:0.0104 (n=2)<br>Cumulative:0.2073\",\"Bin: [48, 50)<br>Observed:<br>48<br>49<br>Proportion:0.0104 (n=2)<br>Cumulative:0.2176\",\"Bin: [50, 52)<br>Observed:<br>50<br>Proportion:0.0052 (n=1)<br>Cumulative:0.2228\",\"Bin: [52, 54)<br>Observed:<br>53<br>Proportion:0.0052 (n=1)<br>Cumulative:0.228\",\"Bin: [54, 56)<br>Observed:<br>54<br>Proportion:0.0052 (n=1)<br>Cumulative:0.2332\",\"Bin: [56, 58)<br>Observed:<br>56<br>57<br>Proportion:0.0104 (n=2)<br>Cumulative:0.2435\",\"Bin: [58, 60)<br>Observed:<br>58<br>59<br>Proportion:0.0104 (n=2)<br>Cumulative:0.2539\",\"Bin: [60, 62)<br>Observed:<br>60<br>61<br>Proportion:0.0104 (n=2)<br>Cumulative:0.2642\",\"Bin: [62, 64)<br>Observed:<br>62<br>Proportion:0.0052 (n=1)<br>Cumulative:0.2694\",\"Bin: [64, 66)<br>Observed:<br>64<br>65<br>Proportion:0.0104 (n=2)<br>Cumulative:0.2798\",\"Bin: [66, 68)<br>Observed:<br>66<br>67<br>Proportion:0.0104 (n=2)<br>Cumulative:0.2902\",\"Bin: [68, 70)<br>Observed:<br>68<br>69<br>Proportion:0.0104 (n=2)<br>Cumulative:0.3005\",\"Bin: [70, 72)<br>Observed:<br>70<br>Proportion:0.0052 (n=1)<br>Cumulative:0.3057\",\"Bin: [72, 74)<br>Observed:<br>72<br>73<br>Proportion:0.0104 (n=2)<br>Cumulative:0.3161\",\"Bin: [74, 76)<br>Observed:<br>74<br>75<br>Proportion:0.0104 (n=2)<br>Cumulative:0.3264\",\"Bin: [76, 78)<br>Observed:<br>76<br>77<br>Proportion:0.0104 (n=2)<br>Cumulative:0.3368\",\"Bin: [78, 80)<br>Observed:<br>78<br>Proportion:0.0052 (n=1)<br>Cumulative:0.342\",\"Bin: [80, 82)<br>Observed:<br>80<br>81<br>Proportion:0.0104 (n=2)<br>Cumulative:0.3523\",\"Bin: [82, 84)<br>Observed:<br>82<br>83<br>Proportion:0.0104 (n=2)<br>Cumulative:0.3627\",\"Bin: [84, 86)<br>Observed:<br>84<br>85<br>Proportion:0.0104 (n=2)<br>Cumulative:0.3731\",\"Bin: [86, 88)<br>Observed:<br>86<br>Proportion:0.0052 (n=1)<br>Cumulative:0.3782\",\"Bin: [88, 90)<br>Observed:<br>88<br>89<br>Proportion:0.0104 (n=2)<br>Cumulative:0.3886\",\"Bin: [90, 92)<br>Observed:<br>90<br>91<br>Proportion:0.0104 (n=2)<br>Cumulative:0.399\",\"Bin: [92, 94)<br>Observed:<br>92<br>93<br>Proportion:0.0104 (n=2)<br>Cumulative:0.4093\",\"Bin: [94, 96)<br>Observed:<br>94<br>Proportion:0.0052 (n=1)<br>Cumulative:0.4145\",\"Bin: [96, 98)<br>Observed:<br>96<br>97<br>Proportion:0.0104 (n=2)<br>Cumulative:0.4249\",\"Bin: [98, 100)<br>Observed:<br>98<br>99<br>Proportion:0.0104 (n=2)<br>Cumulative:0.4352\",\"Bin: [100, 102)<br>Observed:<br>100<br>101<br>Proportion:0.0104 (n=2)<br>Cumulative:0.4456\",\"Bin: [102, 104)<br>Observed:<br>102<br>Proportion:0.0052 (n=1)<br>Cumulative:0.4508\",\"Bin: [104, 106)<br>Observed:<br>104<br>105<br>Proportion:0.0104 (n=2)<br>Cumulative:0.4611\",\"Bin: [106, 108)<br>Observed:<br>106<br>107<br>Proportion:0.0104 (n=2)<br>Cumulative:0.4715\",\"Bin: [108, 110)<br>Observed:<br>108<br>109<br>Proportion:0.0104 (n=2)<br>Cumulative:0.4819\",\"Bin: [110, 112)<br>Observed:<br>110<br>Proportion:0.0052 (n=1)<br>Cumulative:0.487\",\"Bin: [112, 114)<br>Observed:<br>112<br>113<br>Proportion:0.0104 (n=2)<br>Cumulative:0.4974\",\"Bin: [114, 116)<br>Observed:<br>114<br>115<br>Proportion:0.0104 (n=2)<br>Cumulative:0.5078\",\"Bin: [116, 118)<br>Observed:<br>116<br>117<br>Proportion:0.0104 (n=2)<br>Cumulative:0.5181\",\"Bin: [118, 120)<br>Observed:<br>118<br>Proportion:0.0052 (n=1)<br>Cumulative:0.5233\",\"Bin: [120, 122)<br>Observed:<br>120<br>121<br>Proportion:0.0104 (n=2)<br>Cumulative:0.5337\",\"Bin: [122, 124)<br>Observed:<br>122<br>123<br>Proportion:0.0104 (n=2)<br>Cumulative:0.544\",\"Bin: [124, 126)<br>Observed:<br>124<br>Proportion:0.0052 (n=1)<br>Cumulative:0.5492\",\"Bin: [126, 128)<br>Observed:<br>126<br>127<br>Proportion:0.0104 (n=2)<br>Cumulative:0.5596\",\"Bin: [128, 130)<br>Observed:<br>128<br>129<br>Proportion:0.0104 (n=2)<br>Cumulative:0.5699\",\"Bin: [130, 132)<br>Observed:<br>130<br>131<br>Proportion:0.0104 (n=2)<br>Cumulative:0.5803\",\"Bin: [132, 134)<br>Observed:<br>133<br>Proportion:0.0052 (n=1)<br>Cumulative:0.5855\",\"Bin: [134, 136)<br>Observed:<br>134<br>135<br>Proportion:0.0104 (n=2)<br>Cumulative:0.5959\",\"Bin: [136, 138)<br>Observed:<br>136<br>137<br>Proportion:0.0104 (n=2)<br>Cumulative:0.6062\",\"Bin: [138, 140)<br>Observed:<br>138<br>139<br>Proportion:0.0104 (n=2)<br>Cumulative:0.6166\",\"Bin: [140, 142)<br>Observed:<br>141<br>Proportion:0.0052 (n=1)<br>Cumulative:0.6218\",\"Bin: [142, 144)<br>Observed:<br>142<br>143<br>Proportion:0.0104 (n=2)<br>Cumulative:0.6321\",\"Bin: [144, 146)<br>Observed:<br>144<br>145<br>Proportion:0.0104 (n=2)<br>Cumulative:0.6425\",\"Bin: [146, 148)<br>Observed:<br>146<br>147<br>Proportion:0.0104 (n=2)<br>Cumulative:0.6528\",\"Bin: [148, 150)<br>Observed:<br>149<br>Proportion:0.0052 (n=1)<br>Cumulative:0.658\",\"Bin: [150, 152)<br>Observed:<br>150<br>151<br>Proportion:0.0104 (n=2)<br>Cumulative:0.6684\",\"Bin: [152, 154)<br>Observed:<br>152<br>153<br>Proportion:0.0104 (n=2)<br>Cumulative:0.6788\",\"Bin: [154, 156)<br>Observed:<br>154<br>155<br>Proportion:0.0104 (n=2)<br>Cumulative:0.6891\",\"Bin: [156, 158)<br>Observed:<br>157<br>Proportion:0.0052 (n=1)<br>Cumulative:0.6943\",\"Bin: [158, 160)<br>Observed:<br>158<br>159<br>Proportion:0.0104 (n=2)<br>Cumulative:0.7047\",\"Bin: [160, 162)<br>Observed:<br>160<br>161<br>Proportion:0.0104 (n=2)<br>Cumulative:0.715\",\"Bin: [162, 164)<br>Observed:<br>162<br>163<br>Proportion:0.0104 (n=2)<br>Cumulative:0.7254\",\"Bin: [164, 166)<br>Observed:<br>165<br>Proportion:0.0052 (n=1)<br>Cumulative:0.7306\",\"Bin: [166, 168)<br>Observed:<br>166<br>167<br>Proportion:0.0104 (n=2)<br>Cumulative:0.7409\",\"Bin: [168, 170)<br>Observed:<br>168<br>169<br>Proportion:0.0104 (n=2)<br>Cumulative:0.7513\",\"Bin: [170, 172)<br>Observed:<br>170<br>171<br>Proportion:0.0104 (n=2)<br>Cumulative:0.7617\",\"Bin: [172, 174)<br>Observed:<br>173<br>Proportion:0.0052 (n=1)<br>Cumulative:0.7668\",\"Bin: [174, 176)<br>Observed:<br>174<br>175<br>Proportion:0.0104 (n=2)<br>Cumulative:0.7772\",\"Bin: [176, 178)<br>Observed:<br>176<br>177<br>Proportion:0.0104 (n=2)<br>Cumulative:0.7876\",\"Bin: [178, 180)<br>Observed:<br>178<br>179<br>Proportion:0.0104 (n=2)<br>Cumulative:0.7979\",\"Bin: [180, 182)<br>Observed:<br>181<br>Proportion:0.0052 (n=1)<br>Cumulative:0.8031\",\"Bin: [182, 184)<br>Observed:<br>182<br>183<br>Proportion:0.0104 (n=2)<br>Cumulative:0.8135\",\"Bin: [184, 186)<br>Observed:<br>184<br>185<br>Proportion:0.0104 (n=2)<br>Cumulative:0.8238\",\"Bin: [186, 188)<br>Observed:<br>186<br>187<br>Proportion:0.0104 (n=2)<br>Cumulative:0.8342\",\"Bin: [188, 190)<br>Observed:<br>189<br>Proportion:0.0052 (n=1)<br>Cumulative:0.8394\",\"Bin: [190, 192)<br>Observed:<br>190<br>191<br>Proportion:0.0104 (n=2)<br>Cumulative:0.8497\",\"Bin: [192, 194)<br>Observed:<br>192<br>193<br>Proportion:0.0104 (n=2)<br>Cumulative:0.8601\",\"Bin: [194, 196)<br>Observed:<br>194<br>195<br>Proportion:0.0104 (n=2)<br>Cumulative:0.8705\",\"Bin: [196, 198)<br>Observed:<br>197<br>Proportion:0.0052 (n=1)<br>Cumulative:0.8756\",\"Bin: [198, 200)<br>Observed:<br>198<br>199<br>Proportion:0.0104 (n=2)<br>Cumulative:0.886\",\"Bin: [200, 202)<br>Observed:<br>200<br>201<br>Proportion:0.0104 (n=2)<br>Cumulative:0.8964\",\"Bin: [202, 204)<br>Observed:<br>202<br>203<br>Proportion:0.0104 (n=2)<br>Cumulative:0.9067\",\"Bin: [204, 206)<br>Observed:<br>205<br>Proportion:0.0052 (n=1)<br>Cumulative:0.9119\",\"Bin: [206, 208)<br>Observed:<br>206<br>207<br>Proportion:0.0104 (n=2)<br>Cumulative:0.9223\",\"Bin: [208, 210)<br>Observed:<br>208<br>209<br>Proportion:0.0104 (n=2)<br>Cumulative:0.9326\",\"Bin: [210, 212)<br>Observed:<br>210<br>Proportion:0.0052 (n=1)<br>Cumulative:0.9378\",\"Bin: [212, 214)<br>Observed:<br>212<br>213<br>Proportion:0.0104 (n=2)<br>Cumulative:0.9482\",\"Bin: [214, 216)<br>Observed:<br>214<br>215<br>Proportion:0.0104 (n=2)<br>Cumulative:0.9585\",\"Bin: [216, 218)<br>Observed:<br>216<br>217<br>Proportion:0.0104 (n=2)<br>Cumulative:0.9689\",\"Bin: [218, 220)<br>Observed:<br>218<br>Proportion:0.0052 (n=1)<br>Cumulative:0.9741\",\"Bin: [220, 222]<br>Observed:<br>220<br>221<br>222<br>Proportion:0.0155 (n=3)<br>Cumulative:0.9896\",\"Q<sub>0.99<\\/sub>:223<br>Bin: (222, 224]<br>Observed:<br>223<br>224<br>Proportion:0.0104 (n=2)<br>Cumulative:1\"][field[0].offset];\n       }","height":20,"width":200},"width":200,"height":20},"evals":["options.tooltipFormatter"],"jsHooks":[]}</script></td>
+<td headers="Quantiles" class="gt_row gt_center"><font size="1">  13.6  </font><font size="2">  24.4  </font><font size="3">  59.0  </font><font size="4"><strong>  114.0  </strong></font><font size="3">  169.0  </font><font size="2">  201.8  </font><font size="1">  213.4  </font></td></tr>
+    <tr><td headers="Variable" class="gt_row gt_left">Age</td>
+<td headers="Label" class="gt_row gt_left" style="font-size: small;"></td>
+<td headers="Units" class="gt_row gt_left" style="font-family: arial; font-size: small;"></td>
+<td headers="n" class="gt_row gt_right">193</td>
+<td headers="Missing" class="gt_row gt_right">0</td>
+<td headers="Distinct" class="gt_row gt_right">46</td>
+<td headers="Info" class="gt_row gt_right">0.999</td>
+<td headers="Mean" class="gt_row gt_right">35.45</td>
+<td headers="pMedian" class="gt_row gt_right">35</td>
+<td headers="Gmd" class="gt_row gt_right">12.47</td>
+<td headers=" " class="gt_row gt_right"><span id="htmlwidget-5be6635509c76ed6c91d" class="sparkline html-widget"></span>
+<script type="application/json" data-for="htmlwidget-5be6635509c76ed6c91d">{"x":{"values":[2,2,3,2,5,2,3,7,6,5,5,7,8,11,4,7,11,8,8,3,2,4,9,4,4,3,9,2,3,4,5,6,2,5,7,2,1,1,1,1,0,2,0,2,1,0,1,0,0,1,2],"options":{"type":"bar","chartRangeMin":0,"zeroColor":"lightgray","barWidth":1,"barSpacing":1,"tooltipFormatter":"function(sparkline, options, field){\n       debugger;\n       return [\"Q<sub>0.01<\\/sub>:16<br>Bin: [16, 17)<br>Observed:<br>16 (2)<br>Proportion:0.0104 (n=2)<br>Cumulative:0.0104\",\"Bin: [17, 18)<br>Observed:<br>17 (2)<br>Proportion:0.0104 (n=2)<br>Cumulative:0.0207\",\"Bin: [18, 19)<br>Observed:<br>18 (3)<br>Proportion:0.0155 (n=3)<br>Cumulative:0.0363\",\"Bin: [19, 20)<br>Observed:<br>19 (2)<br>Proportion:0.0104 (n=2)<br>Cumulative:0.0466\",\"Bin: [20, 21)<br>Observed:<br>20 (5)<br>Proportion:0.0259 (n=5)<br>Cumulative:0.0725\",\"Bin: [21, 22)<br>Observed:<br>21 (2)<br>Proportion:0.0104 (n=2)<br>Cumulative:0.0829\",\"Bin: [22, 23)<br>Observed:<br>22 (3)<br>Proportion:0.0155 (n=3)<br>Cumulative:0.0984\",\"Bin: [23, 24)<br>Observed:<br>23 (7)<br>Proportion:0.0363 (n=7)<br>Cumulative:0.1347\",\"Bin: [24, 25)<br>Observed:<br>24 (6)<br>Proportion:0.0311 (n=6)<br>Cumulative:0.1658\",\"Bin: [25, 26)<br>Observed:<br>25 (5)<br>Proportion:0.0259 (n=5)<br>Cumulative:0.1917\",\"Bin: [26, 27)<br>Observed:<br>26 (5)<br>Proportion:0.0259 (n=5)<br>Cumulative:0.2176\",\"Bin: [27, 28)<br>Observed:<br>27 (7)<br>Proportion:0.0363 (n=7)<br>Cumulative:0.2539\",\"Bin: [28, 29)<br>Observed:<br>28 (8)<br>Proportion:0.0415 (n=8)<br>Cumulative:0.2953\",\"Bin: [29, 30)<br>Observed:<br>29 (11)<br>Proportion:0.057 (n=11)<br>Cumulative:0.3523\",\"Bin: [30, 31)<br>Observed:<br>30 (4)<br>Proportion:0.0207 (n=4)<br>Cumulative:0.3731\",\"Bin: [31, 32)<br>Observed:<br>31 (7)<br>Proportion:0.0363 (n=7)<br>Cumulative:0.4093\",\"Bin: [32, 33)<br>Observed:<br>32 (11)<br>Proportion:0.057 (n=11)<br>Cumulative:0.4663\",\"Bin: [33, 34)<br>Observed:<br>33 (8)<br>Proportion:0.0415 (n=8)<br>Cumulative:0.5078\",\"Bin: [34, 35)<br>Observed:<br>34 (8)<br>Proportion:0.0415 (n=8)<br>Cumulative:0.5492\",\"Bin: [35, 36)<br>Observed:<br>35 (3)<br>Proportion:0.0155 (n=3)<br>Cumulative:0.5648\",\"Bin: [36, 37)<br>Observed:<br>36 (2)<br>Proportion:0.0104 (n=2)<br>Cumulative:0.5751\",\"Bin: [37, 38)<br>Observed:<br>37 (4)<br>Proportion:0.0207 (n=4)<br>Cumulative:0.5959\",\"Bin: [38, 39)<br>Observed:<br>38 (9)<br>Proportion:0.0466 (n=9)<br>Cumulative:0.6425\",\"Bin: [39, 40)<br>Observed:<br>39 (4)<br>Proportion:0.0207 (n=4)<br>Cumulative:0.6632\",\"Bin: [40, 41)<br>Observed:<br>40 (4)<br>Proportion:0.0207 (n=4)<br>Cumulative:0.6839\",\"Bin: [41, 42)<br>Observed:<br>41 (3)<br>Proportion:0.0155 (n=3)<br>Cumulative:0.6995\",\"Bin: [42, 43)<br>Observed:<br>42 (9)<br>Proportion:0.0466 (n=9)<br>Cumulative:0.7461\",\"Bin: [43, 44)<br>Observed:<br>43 (2)<br>Proportion:0.0104 (n=2)<br>Cumulative:0.7565\",\"Bin: [44, 45)<br>Observed:<br>44 (3)<br>Proportion:0.0155 (n=3)<br>Cumulative:0.772\",\"Bin: [45, 46)<br>Observed:<br>45 (4)<br>Proportion:0.0207 (n=4)<br>Cumulative:0.7927\",\"Bin: [46, 47)<br>Observed:<br>46 (5)<br>Proportion:0.0259 (n=5)<br>Cumulative:0.8187\",\"Bin: [47, 48)<br>Observed:<br>47 (6)<br>Proportion:0.0311 (n=6)<br>Cumulative:0.8497\",\"Bin: [48, 49)<br>Observed:<br>48 (2)<br>Proportion:0.0104 (n=2)<br>Cumulative:0.8601\",\"Bin: [49, 50)<br>Observed:<br>49 (5)<br>Proportion:0.0259 (n=5)<br>Cumulative:0.886\",\"Bin: [50, 51)<br>Observed:<br>50 (7)<br>Proportion:0.0363 (n=7)<br>Cumulative:0.9223\",\"Bin: [51, 52)<br>Observed:<br>51 (2)<br>Proportion:0.0104 (n=2)<br>Cumulative:0.9326\",\"Bin: [52, 53)<br>Observed:<br>52<br>Proportion:0.0052 (n=1)<br>Cumulative:0.9378\",\"Bin: [53, 54)<br>Observed:<br>53<br>Proportion:0.0052 (n=1)<br>Cumulative:0.943\",\"Bin: [54, 55)<br>Observed:<br>54<br>Proportion:0.0052 (n=1)<br>Cumulative:0.9482\",\"Bin: [55, 56)<br>Observed:<br>55<br>Proportion:0.0052 (n=1)<br>Cumulative:0.9534\",\"\",\"Bin: [57, 58)<br>Observed:<br>57 (2)<br>Proportion:0.0104 (n=2)<br>Cumulative:0.9637\",\"\",\"Bin: [59, 60)<br>Observed:<br>59 (2)<br>Proportion:0.0104 (n=2)<br>Cumulative:0.9741\",\"Bin: [60, 61)<br>Observed:<br>60<br>Proportion:0.0052 (n=1)<br>Cumulative:0.9793\",\"\",\"Bin: [62, 63)<br>Observed:<br>62<br>Proportion:0.0052 (n=1)<br>Cumulative:0.9845\",\"\",\"\",\"Bin: [65, 66]<br>Observed:<br>66<br>Proportion:0.0052 (n=1)<br>Cumulative:0.9896\",\"Q<sub>0.99<\\/sub>:69<br>Bin: (66, 69]<br>Observed:<br>69 (2)<br>Proportion:0.0104 (n=2)<br>Cumulative:1\"][field[0].offset];\n       }","height":20,"width":200},"width":200,"height":20},"evals":["options.tooltipFormatter"],"jsHooks":[]}</script></td>
+<td headers="Quantiles" class="gt_row gt_center"><font size="1">  20.0  </font><font size="2">  23.0  </font><font size="3">  27.0  </font><font size="4"><strong>  33.0  </strong></font><font size="3">  43.0  </font><font size="2">  50.0  </font><font size="1">  54.4  </font></td></tr>
+    <tr><td headers="Variable" class="gt_row gt_left">EDSS</td>
+<td headers="Label" class="gt_row gt_left" style="font-size: small;">Expanded Disability Status Scale</td>
+<td headers="Units" class="gt_row gt_left" style="font-family: arial; font-size: small;"></td>
+<td headers="n" class="gt_row gt_right">179</td>
+<td headers="Missing" class="gt_row gt_right">14</td>
+<td headers="Distinct" class="gt_row gt_right">12</td>
+<td headers="Info" class="gt_row gt_right">0.951</td>
+<td headers="Mean" class="gt_row gt_right">1.81</td>
+<td headers="pMedian" class="gt_row gt_right">1.75</td>
+<td headers="Gmd" class="gt_row gt_right">1.053</td>
+<td headers=" " class="gt_row gt_right"><span id="htmlwidget-fd9e9545542e17f3824e" class="sparkline html-widget"></span>
+<script type="application/json" data-for="htmlwidget-fd9e9545542e17f3824e">{"x":{"values":[11,0,39,43,52,13,7,5,4,0,2,3],"options":{"type":"bar","chartRangeMin":0,"zeroColor":"lightgray","barWidth":1,"barSpacing":1,"tooltipFormatter":"function(sparkline, options, field){\n       debugger;\n       return [\"Bin: [0, 0.5)<br>Observed:<br>0 (11)<br>Proportion:0.0615 (n=11)<br>Cumulative:0.0615\",\"\",\"Bin: [1, 1.5)<br>Observed:<br>1 (39)<br>Proportion:0.2179 (n=39)<br>Cumulative:0.2793\",\"Bin: [1.5, 2)<br>Observed:<br>1.5 (43)<br>Proportion:0.2402 (n=43)<br>Cumulative:0.5196\",\"Bin: [2, 2.5)<br>Observed:<br>2 (52)<br>Proportion:0.2905 (n=52)<br>Cumulative:0.8101\",\"Bin: [2.5, 3)<br>Observed:<br>2.5 (13)<br>Proportion:0.0726 (n=13)<br>Cumulative:0.8827\",\"Bin: [3, 3.5)<br>Observed:<br>3 (7)<br>Proportion:0.0391 (n=7)<br>Cumulative:0.9218\",\"Bin: [3.5, 4)<br>Observed:<br>3.5 (5)<br>Proportion:0.0279 (n=5)<br>Cumulative:0.9497\",\"Bin: [4, 4.5)<br>Observed:<br>4 (4)<br>Proportion:0.0223 (n=4)<br>Cumulative:0.9721\",\"\",\"Bin: [5, 5.5]<br>Observed:<br>5<br>5.5<br>Proportion:0.0112 (n=2)<br>Cumulative:0.9832\",\"Q<sub>0.99<\\/sub>:6<br>Bin: (5.5, 7]<br>Observed:<br>6 (2)<br>7<br>Proportion:0.0168 (n=3)<br>Cumulative:1\"][field[0].offset];\n       }","height":20,"width":200},"width":200,"height":20},"evals":["options.tooltipFormatter"],"jsHooks":[]}</script></td>
+<td headers="Quantiles" class="gt_row gt_center"><font size="1">  0.00  </font><font size="2">  1.00  </font><font size="3">  1.00  </font><font size="4"><strong>  1.50  </strong></font><font size="3">  2.00  </font><font size="2">  3.00  </font><font size="1">  3.55  </font></td></tr>
+    <tr><td headers="Variable" class="gt_row gt_left">Albumin_CSF</td>
+<td headers="Label" class="gt_row gt_left" style="font-size: small;">The level of CSF albumin is used as a reference to indicate increased permeability of the blood capillaries. CSF IgG is frequently elevated in multiple sclerosis, but normal levels do not rule out multiple sclerosis. Reference is 5-34 mg/dL</td>
+<td headers="Units" class="gt_row gt_left" style="font-family: arial; font-size: small;">mg/dL</td>
+<td headers="n" class="gt_row gt_right">153</td>
+<td headers="Missing" class="gt_row gt_right">40</td>
+<td headers="Distinct" class="gt_row gt_right">126</td>
+<td headers="Info" class="gt_row gt_right">1.000</td>
+<td headers="Mean" class="gt_row gt_right">34.78</td>
+<td headers="pMedian" class="gt_row gt_right">33.65</td>
+<td headers="Gmd" class="gt_row gt_right">15.25</td>
+<td headers=" " class="gt_row gt_right"><span id="htmlwidget-555e4dc782eb2ae0699b" class="sparkline html-widget"></span>
+<script type="application/json" data-for="htmlwidget-555e4dc782eb2ae0699b">{"x":{"values":[2,1,0,1,0,2,0,2,2,1,4,4,1,0,3,0,1,3,1,2,1,1,2,4,4,0,5,3,0,4,0,4,1,3,2,5,2,0,3,2,4,1,5,3,3,4,3,1,3,0,2,2,0,0,4,2,2,1,0,0,2,1,0,0,1,3,0,0,0,1,2,0,2,1,1,2,1,1,1,0,1,1,1,0,0,0,1,1,1,1,2,0,0,1,0,0,1,0,0,0,1,1,1,1,0,0,1,2],"options":{"type":"bar","chartRangeMin":0,"zeroColor":"lightgray","barWidth":1,"barSpacing":1,"tooltipFormatter":"function(sparkline, options, field){\n       debugger;\n       return [\"Q<sub>0.01<\\/sub>:11.2<br>Bin: [9.42, 13.5)<br>Observed:<br>9.42<br>11.2<br>Proportion:0.0131 (n=2)<br>Cumulative:0.0131\",\"Bin: [13.5, 14)<br>Observed:<br>13.9<br>Proportion:0.0065 (n=1)<br>Cumulative:0.0196\",\"\",\"Bin: [14.5, 15)<br>Observed:<br>14.8<br>Proportion:0.0065 (n=1)<br>Cumulative:0.0261\",\"\",\"Bin: [15.5, 16)<br>Observed:<br>15.5<br>15.8<br>Proportion:0.0131 (n=2)<br>Cumulative:0.0392\",\"\",\"Bin: [16.5, 17)<br>Observed:<br>16.5<br>16.6<br>Proportion:0.0131 (n=2)<br>Cumulative:0.0523\",\"Bin: [17, 17.5)<br>Observed:<br>17.1<br>17.4<br>Proportion:0.0131 (n=2)<br>Cumulative:0.0654\",\"Bin: [17.5, 18)<br>Observed:<br>17.9<br>Proportion:0.0065 (n=1)<br>Cumulative:0.0719\",\"Bin: [18, 18.5)<br>Observed:<br>18.1<br>18.2 (2)<br>18.3<br>Proportion:0.0261 (n=4)<br>Cumulative:0.098\",\"Bin: [18.5, 19)<br>Observed:<br>18.5<br>18.7<br>18.8<br>18.9<br>Proportion:0.0261 (n=4)<br>Cumulative:0.1242\",\"Bin: [19, 19.5)<br>Observed:<br>19.2<br>Proportion:0.0065 (n=1)<br>Cumulative:0.1307\",\"\",\"Bin: [20, 20.5)<br>Observed:<br>20.1 (2)<br>20.2<br>Proportion:0.0196 (n=3)<br>Cumulative:0.1503\",\"\",\"Bin: [21, 21.5)<br>Observed:<br>21.2<br>Proportion:0.0065 (n=1)<br>Cumulative:0.1569\",\"Bin: [21.5, 22)<br>Observed:<br>21.5<br>21.7 (2)<br>Proportion:0.0196 (n=3)<br>Cumulative:0.1765\",\"Bin: [22, 22.5)<br>Observed:<br>22.4<br>Proportion:0.0065 (n=1)<br>Cumulative:0.183\",\"Bin: [22.5, 23)<br>Observed:<br>22.5<br>22.6<br>Proportion:0.0131 (n=2)<br>Cumulative:0.1961\",\"Bin: [23, 23.5)<br>Observed:<br>23<br>Proportion:0.0065 (n=1)<br>Cumulative:0.2026\",\"Bin: [23.5, 24)<br>Observed:<br>23.5<br>Proportion:0.0065 (n=1)<br>Cumulative:0.2092\",\"Bin: [24, 24.5)<br>Observed:<br>24<br>24.3<br>Proportion:0.0131 (n=2)<br>Cumulative:0.2222\",\"Bin: [24.5, 25)<br>Observed:<br>24.7 (2)<br>24.8<br>24.9<br>Proportion:0.0261 (n=4)<br>Cumulative:0.2484\",\"Bin: [25, 25.5)<br>Observed:<br>25 (2)<br>25.3 (2)<br>Proportion:0.0261 (n=4)<br>Cumulative:0.2745\",\"\",\"Bin: [26, 26.5)<br>Observed:<br>26<br>26.2 (3)<br>26.3<br>Proportion:0.0327 (n=5)<br>Cumulative:0.3072\",\"Bin: [26.5, 27)<br>Observed:<br>26.6<br>26.8<br>26.9<br>Proportion:0.0196 (n=3)<br>Cumulative:0.3268\",\"\",\"Bin: [27.5, 28)<br>Observed:<br>27.6<br>27.8<br>27.9 (2)<br>Proportion:0.0261 (n=4)<br>Cumulative:0.3529\",\"\",\"Bin: [28.5, 29)<br>Observed:<br>28.7<br>28.9 (3)<br>Proportion:0.0261 (n=4)<br>Cumulative:0.3791\",\"Bin: [29, 29.5)<br>Observed:<br>29.4<br>Proportion:0.0065 (n=1)<br>Cumulative:0.3856\",\"Bin: [29.5, 30)<br>Observed:<br>29.5 (3)<br>Proportion:0.0196 (n=3)<br>Cumulative:0.4052\",\"Bin: [30, 30.5)<br>Observed:<br>30<br>30.1<br>Proportion:0.0131 (n=2)<br>Cumulative:0.4183\",\"Bin: [30.5, 31)<br>Observed:<br>30.7 (3)<br>30.8<br>30.9<br>Proportion:0.0327 (n=5)<br>Cumulative:0.451\",\"Bin: [31, 31.5)<br>Observed:<br>31 (2)<br>Proportion:0.0131 (n=2)<br>Cumulative:0.4641\",\"\",\"Bin: [32, 32.5)<br>Observed:<br>32<br>32.1<br>32.3<br>Proportion:0.0196 (n=3)<br>Cumulative:0.4837\",\"Bin: [32.5, 33)<br>Observed:<br>32.6 (2)<br>Proportion:0.0131 (n=2)<br>Cumulative:0.4967\",\"Bin: [33, 33.5)<br>Observed:<br>33.2<br>33.3 (2)<br>33.4<br>Proportion:0.0261 (n=4)<br>Cumulative:0.5229\",\"Bin: [33.5, 34)<br>Observed:<br>33.7<br>Proportion:0.0065 (n=1)<br>Cumulative:0.5294\",\"Bin: [34, 34.5)<br>Observed:<br>34 (3)<br>34.1 (2)<br>Proportion:0.0327 (n=5)<br>Cumulative:0.5621\",\"Bin: [34.5, 35)<br>Observed:<br>34.7<br>34.8 (2)<br>Proportion:0.0196 (n=3)<br>Cumulative:0.5817\",\"Bin: [35, 35.5)<br>Observed:<br>35<br>35.1<br>35.2<br>Proportion:0.0196 (n=3)<br>Cumulative:0.6013\",\"Bin: [35.5, 36)<br>Observed:<br>35.7<br>35.8<br>35.9 (2)<br>Proportion:0.0261 (n=4)<br>Cumulative:0.6275\",\"Bin: [36, 36.5)<br>Observed:<br>36<br>36.3<br>36.4<br>Proportion:0.0196 (n=3)<br>Cumulative:0.6471\",\"Bin: [36.5, 37)<br>Observed:<br>36.6<br>Proportion:0.0065 (n=1)<br>Cumulative:0.6536\",\"Bin: [37, 37.5)<br>Observed:<br>37<br>37.1<br>37.3<br>Proportion:0.0196 (n=3)<br>Cumulative:0.6732\",\"\",\"Bin: [38, 38.5)<br>Observed:<br>38.3<br>38.4<br>Proportion:0.0131 (n=2)<br>Cumulative:0.6863\",\"Bin: [38.5, 39)<br>Observed:<br>38.6 (2)<br>Proportion:0.0131 (n=2)<br>Cumulative:0.6993\",\"\",\"\",\"Bin: [40, 40.5)<br>Observed:<br>40 (2)<br>40.2 (2)<br>Proportion:0.0261 (n=4)<br>Cumulative:0.7255\",\"Bin: [40.5, 41)<br>Observed:<br>40.6<br>40.9<br>Proportion:0.0131 (n=2)<br>Cumulative:0.7386\",\"Bin: [41, 41.5)<br>Observed:<br>41<br>41.2<br>Proportion:0.0131 (n=2)<br>Cumulative:0.7516\",\"Bin: [41.5, 42)<br>Observed:<br>41.9<br>Proportion:0.0065 (n=1)<br>Cumulative:0.7582\",\"\",\"\",\"Bin: [43, 43.5)<br>Observed:<br>43<br>43.3<br>Proportion:0.0131 (n=2)<br>Cumulative:0.7712\",\"Bin: [43.5, 44)<br>Observed:<br>43.8<br>Proportion:0.0065 (n=1)<br>Cumulative:0.7778\",\"\",\"\",\"Bin: [45, 45.5)<br>Observed:<br>45.1<br>Proportion:0.0065 (n=1)<br>Cumulative:0.7843\",\"Bin: [45.5, 46)<br>Observed:<br>45.7<br>45.8 (2)<br>Proportion:0.0196 (n=3)<br>Cumulative:0.8039\",\"\",\"\",\"\",\"Bin: [47.5, 48)<br>Observed:<br>47.9<br>Proportion:0.0065 (n=1)<br>Cumulative:0.8105\",\"Bin: [48, 48.5)<br>Observed:<br>48<br>48.3<br>Proportion:0.0131 (n=2)<br>Cumulative:0.8235\",\"\",\"Bin: [49, 49.5)<br>Observed:<br>49.1<br>49.3<br>Proportion:0.0131 (n=2)<br>Cumulative:0.8366\",\"Bin: [49.5, 50)<br>Observed:<br>49.6<br>Proportion:0.0065 (n=1)<br>Cumulative:0.8431\",\"Bin: [50, 50.5)<br>Observed:<br>50.1<br>Proportion:0.0065 (n=1)<br>Cumulative:0.8497\",\"Bin: [50.5, 51)<br>Observed:<br>50.5<br>50.9<br>Proportion:0.0131 (n=2)<br>Cumulative:0.8627\",\"Bin: [51, 51.5)<br>Observed:<br>51.2<br>Proportion:0.0065 (n=1)<br>Cumulative:0.8693\",\"Bin: [51.5, 52)<br>Observed:<br>51.7<br>Proportion:0.0065 (n=1)<br>Cumulative:0.8758\",\"Bin: [52, 52.5)<br>Observed:<br>52.4<br>Proportion:0.0065 (n=1)<br>Cumulative:0.8824\",\"\",\"Bin: [53, 53.5)<br>Observed:<br>53<br>Proportion:0.0065 (n=1)<br>Cumulative:0.8889\",\"Bin: [53.5, 54)<br>Observed:<br>53.8<br>Proportion:0.0065 (n=1)<br>Cumulative:0.8954\",\"Bin: [54, 54.5)<br>Observed:<br>54.1<br>Proportion:0.0065 (n=1)<br>Cumulative:0.902\",\"\",\"\",\"\",\"Bin: [56, 56.5)<br>Observed:<br>56.3<br>Proportion:0.0065 (n=1)<br>Cumulative:0.9085\",\"Bin: [56.5, 57)<br>Observed:<br>56.8<br>Proportion:0.0065 (n=1)<br>Cumulative:0.915\",\"Bin: [57, 57.5)<br>Observed:<br>57<br>Proportion:0.0065 (n=1)<br>Cumulative:0.9216\",\"Bin: [57.5, 58)<br>Observed:<br>57.5<br>Proportion:0.0065 (n=1)<br>Cumulative:0.9281\",\"Bin: [58, 58.5)<br>Observed:<br>58.3<br>58.4<br>Proportion:0.0131 (n=2)<br>Cumulative:0.9412\",\"\",\"\",\"Bin: [59.5, 60)<br>Observed:<br>59.5<br>Proportion:0.0065 (n=1)<br>Cumulative:0.9477\",\"\",\"\",\"Bin: [61, 61.5)<br>Observed:<br>61<br>Proportion:0.0065 (n=1)<br>Cumulative:0.9542\",\"\",\"\",\"\",\"Bin: [63, 63.5)<br>Observed:<br>63.1<br>Proportion:0.0065 (n=1)<br>Cumulative:0.9608\",\"Bin: [63.5, 64)<br>Observed:<br>63.8<br>Proportion:0.0065 (n=1)<br>Cumulative:0.9673\",\"Bin: [64, 64.5)<br>Observed:<br>64.4<br>Proportion:0.0065 (n=1)<br>Cumulative:0.9739\",\"Bin: [64.5, 65)<br>Observed:<br>64.8<br>Proportion:0.0065 (n=1)<br>Cumulative:0.9804\",\"\",\"\",\"Bin: [66, 66.5]<br>Observed:<br>66.5<br>Proportion:0.0065 (n=1)<br>Cumulative:0.9869\",\"Q<sub>0.99<\\/sub>:77<br>Bin: (66.5, 83]<br>Observed:<br>77<br>83<br>Proportion:0.0131 (n=2)<br>Cumulative:1\"][field[0].offset];\n       }","height":20,"width":200},"width":200,"height":20},"evals":["options.tooltipFormatter"],"jsHooks":[]}</script></td>
+<td headers="Quantiles" class="gt_row gt_center"><font size="1">  16.90  </font><font size="2">  18.54  </font><font size="3">  25.00  </font><font size="4"><strong>  33.20  </strong></font><font size="3">  41.20  </font><font size="2">  54.04  </font><font size="1">  60.10  </font></td></tr>
+    <tr><td headers="Variable" class="gt_row gt_left">Glucose_CSF</td>
+<td headers="Label" class="gt_row gt_left" style="font-size: small;">Amount of sugar (glucose) in the cerebrospinal fluid (CSF). Reference is 50 to 80 mg/100 mL. Abnormal results include higher and lower glucose levels which may be due to nnflammation of the central nervous system</td>
+<td headers="Units" class="gt_row gt_left" style="font-family: arial; font-size: small;">mg/100mL</td>
+<td headers="n" class="gt_row gt_right">153</td>
+<td headers="Missing" class="gt_row gt_right">40</td>
+<td headers="Distinct" class="gt_row gt_right">40</td>
+<td headers="Info" class="gt_row gt_right">0.997</td>
+<td headers="Mean" class="gt_row gt_right">66.06</td>
+<td headers="pMedian" class="gt_row gt_right">63.5</td>
+<td headers="Gmd" class="gt_row gt_right">11.03</td>
+<td headers=" " class="gt_row gt_right"><span id="htmlwidget-c57c5cd33ee3833f3d1d" class="sparkline html-widget"></span>
+<script type="application/json" data-for="htmlwidget-c57c5cd33ee3833f3d1d">{"x":{"values":[2,1,3,4,2,5,11,15,8,10,10,9,7,13,11,5,5,5,4,2,1,1,2,1,1,0,0,1,0,1,0,0,0,0,1,0,1,1,0,0,1,0,0,0,2,1,1,0,1,0,0,0,0,0,1,0,0,1,2],"options":{"type":"bar","chartRangeMin":0,"zeroColor":"lightgray","barWidth":1,"barSpacing":1,"tooltipFormatter":"function(sparkline, options, field){\n       debugger;\n       return [\"Q<sub>0.01<\\/sub>:52<br>Bin: [49, 52.5)<br>Observed:<br>49<br>52<br>Proportion:0.0131 (n=2)<br>Cumulative:0.0131\",\"Bin: [52.5, 53.5)<br>Observed:<br>52.6<br>Proportion:0.0065 (n=1)<br>Cumulative:0.0196\",\"Bin: [53.5, 54.5)<br>Observed:<br>54 (3)<br>Proportion:0.0196 (n=3)<br>Cumulative:0.0392\",\"Bin: [54.5, 55.5)<br>Observed:<br>55 (4)<br>Proportion:0.0261 (n=4)<br>Cumulative:0.0654\",\"Bin: [55.5, 56.5)<br>Observed:<br>56 (2)<br>Proportion:0.0131 (n=2)<br>Cumulative:0.0784\",\"Bin: [56.5, 57.5)<br>Observed:<br>57 (5)<br>Proportion:0.0327 (n=5)<br>Cumulative:0.1111\",\"Bin: [57.5, 58.5)<br>Observed:<br>58 (11)<br>Proportion:0.0719 (n=11)<br>Cumulative:0.183\",\"Bin: [58.5, 59.5)<br>Observed:<br>59 (15)<br>Proportion:0.098 (n=15)<br>Cumulative:0.281\",\"Bin: [59.5, 60.5)<br>Observed:<br>60 (8)<br>Proportion:0.0523 (n=8)<br>Cumulative:0.3333\",\"Bin: [60.5, 61.5)<br>Observed:<br>61 (10)<br>Proportion:0.0654 (n=10)<br>Cumulative:0.3987\",\"Bin: [61.5, 62.5)<br>Observed:<br>62 (10)<br>Proportion:0.0654 (n=10)<br>Cumulative:0.4641\",\"Bin: [62.5, 63.5)<br>Observed:<br>63 (9)<br>Proportion:0.0588 (n=9)<br>Cumulative:0.5229\",\"Bin: [63.5, 64.5)<br>Observed:<br>64 (7)<br>Proportion:0.0458 (n=7)<br>Cumulative:0.5686\",\"Bin: [64.5, 65.5)<br>Observed:<br>65 (13)<br>Proportion:0.085 (n=13)<br>Cumulative:0.6536\",\"Bin: [65.5, 66.5)<br>Observed:<br>66 (11)<br>Proportion:0.0719 (n=11)<br>Cumulative:0.7255\",\"Bin: [66.5, 67.5)<br>Observed:<br>67 (5)<br>Proportion:0.0327 (n=5)<br>Cumulative:0.7582\",\"Bin: [67.5, 68.5)<br>Observed:<br>68 (5)<br>Proportion:0.0327 (n=5)<br>Cumulative:0.7908\",\"Bin: [68.5, 69.5)<br>Observed:<br>69 (5)<br>Proportion:0.0327 (n=5)<br>Cumulative:0.8235\",\"Bin: [69.5, 70.5)<br>Observed:<br>70 (4)<br>Proportion:0.0261 (n=4)<br>Cumulative:0.8497\",\"Bin: [70.5, 71.5)<br>Observed:<br>71 (2)<br>Proportion:0.0131 (n=2)<br>Cumulative:0.8627\",\"Bin: [71.5, 72.5)<br>Observed:<br>72<br>Proportion:0.0065 (n=1)<br>Cumulative:0.8693\",\"Bin: [72.5, 73.5)<br>Observed:<br>73<br>Proportion:0.0065 (n=1)<br>Cumulative:0.8758\",\"Bin: [73.5, 74.5)<br>Observed:<br>74 (2)<br>Proportion:0.0131 (n=2)<br>Cumulative:0.8889\",\"Bin: [74.5, 75.5)<br>Observed:<br>75<br>Proportion:0.0065 (n=1)<br>Cumulative:0.8954\",\"Bin: [75.5, 76.5)<br>Observed:<br>76<br>Proportion:0.0065 (n=1)<br>Cumulative:0.902\",\"\",\"\",\"Bin: [78.5, 79.5)<br>Observed:<br>79<br>Proportion:0.0065 (n=1)<br>Cumulative:0.9085\",\"\",\"Bin: [80.5, 81.5)<br>Observed:<br>81<br>Proportion:0.0065 (n=1)<br>Cumulative:0.915\",\"\",\"\",\"\",\"\",\"Bin: [85.5, 86.5)<br>Observed:<br>86<br>Proportion:0.0065 (n=1)<br>Cumulative:0.9216\",\"\",\"Bin: [87.5, 88.5)<br>Observed:<br>88<br>Proportion:0.0065 (n=1)<br>Cumulative:0.9281\",\"Bin: [88.5, 89.5)<br>Observed:<br>89<br>Proportion:0.0065 (n=1)<br>Cumulative:0.9346\",\"\",\"\",\"Bin: [91.5, 92.5)<br>Observed:<br>92<br>Proportion:0.0065 (n=1)<br>Cumulative:0.9412\",\"\",\"\",\"\",\"Bin: [95.5, 96.5)<br>Observed:<br>96 (2)<br>Proportion:0.0131 (n=2)<br>Cumulative:0.9542\",\"Bin: [96.5, 97.5)<br>Observed:<br>97<br>Proportion:0.0065 (n=1)<br>Cumulative:0.9608\",\"Bin: [97.5, 98.5)<br>Observed:<br>98<br>Proportion:0.0065 (n=1)<br>Cumulative:0.9673\",\"\",\"Bin: [99.5, 100.5)<br>Observed:<br>100<br>Proportion:0.0065 (n=1)<br>Cumulative:0.9739\",\"\",\"\",\"\",\"\",\"\",\"Bin: [105.5, 106.5)<br>Observed:<br>106<br>Proportion:0.0065 (n=1)<br>Cumulative:0.9804\",\"\",\"\",\"Bin: [108.5, 109.5]<br>Observed:<br>110<br>Proportion:0.0065 (n=1)<br>Cumulative:0.9869\",\"Q<sub>0.99<\\/sub>:115<br>Bin: (109.5, 137]<br>Observed:<br>115<br>137<br>Proportion:0.0131 (n=2)<br>Cumulative:1\"][field[0].offset];\n       }","height":20,"width":200},"width":200,"height":20},"evals":["options.tooltipFormatter"],"jsHooks":[]}</script></td>
+<td headers="Quantiles" class="gt_row gt_center"><font size="1">  55.0  </font><font size="2">  57.0  </font><font size="3">  59.0  </font><font size="4"><strong>  63.0  </strong></font><font size="3">  67.0  </font><font size="2">  75.8  </font><font size="1">  96.0  </font></td></tr>
+  </tbody>
+  
+  
+</table>
+</div></code></pre>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<pre data-html=""><code><div id="meppimzgdv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#meppimzgdv table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#meppimzgdv thead, #meppimzgdv tbody, #meppimzgdv tfoot, #meppimzgdv tr, #meppimzgdv td, #meppimzgdv th {
+  border-style: none;
+}
+
+#meppimzgdv p {
+  margin: 0;
+  padding: 0;
+}
+
+#meppimzgdv .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#meppimzgdv .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#meppimzgdv .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#meppimzgdv .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#meppimzgdv .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#meppimzgdv .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#meppimzgdv .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#meppimzgdv .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#meppimzgdv .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#meppimzgdv .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#meppimzgdv .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#meppimzgdv .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#meppimzgdv .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#meppimzgdv .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#meppimzgdv .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#meppimzgdv .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#meppimzgdv .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#meppimzgdv .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#meppimzgdv .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#meppimzgdv .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#meppimzgdv .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#meppimzgdv .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#meppimzgdv .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#meppimzgdv .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#meppimzgdv .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#meppimzgdv .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#meppimzgdv .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#meppimzgdv .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#meppimzgdv .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#meppimzgdv .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#meppimzgdv .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#meppimzgdv .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#meppimzgdv .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#meppimzgdv .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#meppimzgdv .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#meppimzgdv .gt_left {
+  text-align: left;
+}
+
+#meppimzgdv .gt_center {
+  text-align: center;
+}
+
+#meppimzgdv .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#meppimzgdv .gt_font_normal {
+  font-weight: normal;
+}
+
+#meppimzgdv .gt_font_bold {
+  font-weight: bold;
+}
+
+#meppimzgdv .gt_font_italic {
+  font-style: italic;
+}
+
+#meppimzgdv .gt_super {
+  font-size: 65%;
+}
+
+#meppimzgdv .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#meppimzgdv .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#meppimzgdv .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#meppimzgdv .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#meppimzgdv .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#meppimzgdv .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#meppimzgdv .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="6" class="gt_heading gt_title gt_font_normal" style=""><strong><code>metaData</code> Descriptives</strong></td>
+    </tr>
+    <tr class="gt_heading">
+      <td colspan="6" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">4 Categorical Variables of 9 Variables, 193 Observations</td>
+    </tr>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Variable">Variable</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Label">Label</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center;" scope="col" id="n">n</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center;" scope="col" id="Missing">Missing</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center;" scope="col" id="Distinct">Distinct</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=" "> </th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="Variable" class="gt_row gt_left">Bucket_Label</td>
+<td headers="Label" class="gt_row gt_left" style="font-size: small;">ID</td>
+<td headers="n" class="gt_row gt_right">193</td>
+<td headers="Missing" class="gt_row gt_right">0</td>
+<td headers="Distinct" class="gt_row gt_right">193</td>
+<td headers="tab" class="gt_row gt_left" style="font-size: x-small;"><div class="gt_from_md"><p>003MS       -<br>
+E113CONTROL<br>
+Min/Max/Mean Width: 3 / 11 / 5.9</p>
+</div></td></tr>
+    <tr><td headers="Variable" class="gt_row gt_left">Group</td>
+<td headers="Label" class="gt_row gt_left" style="font-size: small;">MS Disease Severity</td>
+<td headers="n" class="gt_row gt_right">193</td>
+<td headers="Missing" class="gt_row gt_right">0</td>
+<td headers="Distinct" class="gt_row gt_right">3</td>
+<td headers="tab" class="gt_row gt_left" style="font-size: x-small;"><span id="htmlwidget-9ce8fcf4d961e60cfc78" class="sparkline html-widget"></span>
+<script type="application/json" data-for="htmlwidget-9ce8fcf4d961e60cfc78">{"x":{"values":[133,43,17],"options":{"type":"bar","chartRangeMin":0,"zeroColor":"lightgray","barWidth":3,"barSpacing":2,"tooltipFormatter":"function(sparkline, options, field){\n       debugger;\n       return [\"MS<br>Proportion:0.6891 (n=133)\",\"CIS<br>Proportion:0.2228 (n=43)\",\"Control<br>Proportion:0.0881 (n=17)\"][field[0].offset];\n       }","height":20,"width":20},"width":20,"height":20},"evals":["options.tooltipFormatter"],"jsHooks":[]}</script></td></tr>
+    <tr><td headers="Variable" class="gt_row gt_left">Site</td>
+<td headers="Label" class="gt_row gt_left" style="font-size: small;">Data collection site</td>
+<td headers="n" class="gt_row gt_right">193</td>
+<td headers="Missing" class="gt_row gt_right">0</td>
+<td headers="Distinct" class="gt_row gt_right">5</td>
+<td headers="tab" class="gt_row gt_left" style="font-size: x-small;"><span id="htmlwidget-926bdbecaa2b3474b26b" class="sparkline html-widget"></span>
+<script type="application/json" data-for="htmlwidget-926bdbecaa2b3474b26b">{"x":{"values":[50,47,47,34,15],"options":{"type":"bar","chartRangeMin":0,"zeroColor":"lightgray","barWidth":3,"barSpacing":2,"tooltipFormatter":"function(sparkline, options, field){\n       debugger;\n       return [\"AUTH_batch1<br>Proportion:0.2591 (n=50)\",\"AUTH_batch2<br>Proportion:0.2435 (n=47)\",\"Eginitio<br>Proportion:0.2435 (n=47)\",\"Attikon<br>Proportion:0.1762 (n=34)\",\"Larissa<br>Proportion:0.0777 (n=15)\"][field[0].offset];\n       }","height":20,"width":30},"width":30,"height":20},"evals":["options.tooltipFormatter"],"jsHooks":[]}</script></td></tr>
+    <tr><td headers="Variable" class="gt_row gt_left">Gender</td>
+<td headers="Label" class="gt_row gt_left" style="font-size: small;"></td>
+<td headers="n" class="gt_row gt_right">193</td>
+<td headers="Missing" class="gt_row gt_right">0</td>
+<td headers="Distinct" class="gt_row gt_right">2</td>
+<td headers="tab" class="gt_row gt_left" style="font-size: x-small;"><span id="htmlwidget-298e813af47c23f82cbc" class="sparkline html-widget"></span>
+<script type="application/json" data-for="htmlwidget-298e813af47c23f82cbc">{"x":{"values":[130,63],"options":{"type":"bar","chartRangeMin":0,"zeroColor":"lightgray","barWidth":3,"barSpacing":2,"tooltipFormatter":"function(sparkline, options, field){\n       debugger;\n       return [\"Female<br>Proportion:0.6736 (n=130)\",\"Male<br>Proportion:0.3264 (n=63)\"][field[0].offset];\n       }","height":20,"width":15},"width":15,"height":20},"evals":["options.tooltipFormatter"],"jsHooks":[]}</script></td></tr>
+  </tbody>
+  
+  
+</table>
+</div></code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="lipid-concentrations-view" class="level2">
+<h2 class="anchored" data-anchor-id="lipid-concentrations-view">Lipid Concentrations View</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-lipid-values" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-lipid-values-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="metaDat_desc_MS_files/figure-html/fig-lipid-values-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="864">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lipid-values-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Lipid concentraion values in data. 0-1 scaled. Currently untargeted.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="known-lipids" class="level2">
+<h2 class="anchored" data-anchor-id="known-lipids">Known Lipids</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Groups"],"name":[1],"type":["chr"],"align":["left"]},{"label":["RT"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["M_Z"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Name"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"627.59376 Da 745.63 s","2":"12.43","3":"628.6010","4":"CE_15:0_"},{"1":"641.61046 Da 765.01 s","2":"12.75","3":"642.6177","4":"CE_16:0_"},{"1":"646.56622 Da 767.08 s","2":"12.78","3":"647.5735","4":"CE_16:0_"},{"1":"622.56854 Da 726.97 s","2":"12.12","3":"640.6023","4":"CE_16:1_"},{"1":"655.62257 Da 744.33 s","2":"12.41","3":"656.6298","4":"CE_17:0_"},{"1":"655.62409 Da 777.56 s","2":"12.96","3":"656.6314","4":"CE_17:0_"},{"1":"653.61062 Da 745.17 s","2":"12.42","3":"654.6179","4":"CE_17:1_"},{"1":"652.61493 Da 799.70 s","2":"13.33","3":"670.6485","4":"CE_18:0_"},{"1":"667.62573 Da 747.08 s","2":"12.45","3":"668.6330","4":"CE_18:1_"},{"1":"650.60003 Da 763.42 s","2":"12.72","3":"668.6334","4":"CE_18:1_"},{"1":"670.56922 Da 590.78 s","2":"9.85","3":"671.5765","4":"CE_18:2_"},{"1":"648.58415 Da 730.88 s","2":"12.18","3":"666.6178","4":"CE_18:2_"},{"1":"670.56611 Da 734.55 s","2":"12.24","3":"671.5734","4":"CE_18:2_"},{"1":"663.59282 Da 593.10 s","2":"9.89","3":"664.6001","4":"CE_18:3_"},{"1":"646.56847 Da 702.63 s","2":"11.71","3":"664.6022","4":"CE_18:3_"},{"1":"683.65440 Da 777.67 s","2":"12.96","3":"684.6617","4":"CE_19:0_"},{"1":"697.67284 Da 799.62 s","2":"13.33","3":"698.6801","4":"CE_20:0_"},{"1":"693.64201 Da 731.43 s","2":"12.19","3":"694.6493","4":"CE_20:2_"},{"1":"693.64148 Da 731.26 s","2":"12.19","3":"694.6488","4":"CE_20:2_"},{"1":"691.62611 Da 703.02 s","2":"11.72","3":"692.6334","4":"CE_20:3_"},{"1":"691.62209 Da 711.11 s","2":"11.85","3":"692.6294","4":"CE_20:3_"},{"1":"691.62590 Da 735.02 s","2":"12.25","3":"692.6332","4":"CE_20:3_"},{"1":"672.58484 Da 712.05 s","2":"11.87","3":"695.5736","4":"CE_20:4_"},{"1":"672.58445 Da 712.13 s","2":"11.87","3":"690.6178","4":"CE_20:4_"},{"1":"705.64193 Da 706.60 s","2":"11.78","3":"706.6492","4":"CE_21:3_"},{"1":"719.65735 Da 736.67 s","2":"12.28","3":"720.6646","4":"CE_22:3_"},{"1":"717.64175 Da 712.12 s","2":"11.87","3":"718.6490","4":"CE_22:4_"},{"1":"651.65224 Da 608.54 s","2":"10.14","3":"652.6595","4":"Cer_42:0_"},{"1":"639.57903 Da 559.05 s","2":"9.32","3":"640.5863","4":"DG_18:0_18:1_"},{"1":"594.52143 Da 530.21 s","2":"8.84","3":"612.5557","4":"DG_18:1_16:0_"},{"1":"620.53740 Da 532.41 s","2":"8.87","3":"638.5714","4":"DG_18:1_18:1_"},{"1":"618.52209 Da 510.27 s","2":"8.50","3":"636.5562","4":"DG_18:2_18:1_"},{"1":"696.56782 Da 545.45 s","2":"9.09","3":"714.6028","4":"DG_22:6_20:0_"},{"1":"467.30098 Da 60.35 s","2":"1.01","3":"468.3083","4":"LPC_14:0_"},{"1":"481.31675 Da 67.85 s","2":"1.13","3":"482.3240","4":"LPC_15:0_"},{"1":"495.33252 Da 77.79 s","2":"1.30","3":"496.3396","4":"LPC_16:0_"},{"1":"495.33216 Da 95.51 s","2":"1.59","3":"496.3394","4":"LPC_16:0_"},{"1":"493.31652 Da 63.20 s","2":"1.05","3":"494.3238","4":"LPC_16:1_"},{"1":"523.36355 Da 97.60 s","2":"1.63","3":"524.3706","4":"LPC_18:0_"},{"1":"523.36389 Da 106.99 s","2":"1.78","3":"524.3708","4":"LPC_18:0_"},{"1":"521.34553 Da 81.73 s","2":"1.36","3":"522.3550","4":"LPC_18:1_"},{"1":"519.33223 Da 67.19 s","2":"1.12","3":"520.3395","4":"LPC_18:2_"},{"1":"517.31639 Da 58.38 s","2":"0.97","3":"518.3237","4":"LPC_18:3_"},{"1":"537.37914 Da 126.63 s","2":"2.11","3":"538.3864","4":"LPC_19:0_"},{"1":"551.39469 Da 151.96 s","2":"2.53","3":"552.4020","4":"LPC_20:0_"},{"1":"545.34745 Da 72.47 s","2":"1.21","3":"546.3547","4":"LPC_20:3_"},{"1":"543.33206 Da 64.91 s","2":"1.08","3":"544.3393","4":"LPC_20:4_"},{"1":"509.38281 Da 125.91 s","2":"2.10","3":"510.3901","4":"LPC_O-18:0_"},{"1":"507.36837 Da 94.61 s","2":"1.58","3":"508.3756","4":"LPC_O-18:1_"},{"1":"565.44660 Da 229.29 s","2":"3.82","3":"566.4539","4":"LPC_O-22:0_"},{"1":"563.43097 Da 180.79 s","2":"3.01","3":"564.4382","4":"LPC_O-22:1_"},{"1":"733.56463 Da 453.62 s","2":"7.56","3":"734.5690","4":"PC_16:0_16:0_"},{"1":"731.54620 Da 365.71 s","2":"6.10","3":"732.5535","4":"PC_16:0_16:1_"},{"1":"761.59301 Da 499.55 s","2":"8.33","3":"762.6003","4":"PC_16:0_18:0_"},{"1":"755.54659 Da 339.16 s","2":"5.65","3":"756.5539","4":"PC_16:0_18:3_"},{"1":"781.56191 Da 371.04 s","2":"6.18","3":"782.5687","4":"PC_16:0_20:4_"},{"1":"779.54612 Da 315.26 s","2":"5.25","3":"780.5532","4":"PC_16:0_20:5_"},{"1":"811.60840 Da 488.44 s","2":"8.14","3":"812.6155","4":"PC_18:0_20:3_"},{"1":"809.59296 Da 473.88 s","2":"7.90","3":"810.5998","4":"PC_18:0_20:4_"},{"1":"807.57672 Da 406.95 s","2":"6.78","3":"808.5840","4":"PC_18:0_20:5_"},{"1":"833.59219 Da 444.31 s","2":"7.41","3":"834.5993","4":"PC_18:0_22:6_"},{"1":"759.57803 Da 466.57 s","2":"7.78","3":"760.5845","4":"PC_18:1_16:0_"},{"1":"787.60934 Da 501.68 s","2":"8.36","3":"788.6158","4":"PC_18:1_18:0_"},{"1":"809.59210 Da 421.65 s","2":"7.03","3":"810.5994","4":"PC_18:1_20:3_"},{"1":"807.57707 Da 377.94 s","2":"6.30","3":"808.5843","4":"PC_18:1_20:4_"},{"1":"729.53097 Da 301.10 s","2":"5.02","3":"730.5377","4":"PC_18:2_14:0_"},{"1":"743.54611 Da 340.93 s","2":"5.68","3":"744.5534","4":"PC_18:2_15:0_"},{"1":"757.56169 Da 385.81 s","2":"6.43","3":"758.5690","4":"PC_18:2_16:0_"},{"1":"755.54628 Da 312.07 s","2":"5.20","3":"756.5533","4":"PC_18:2_16:1_"},{"1":"771.57867 Da 436.47 s","2":"7.27","3":"772.5859","4":"PC_18:2_17:0_"},{"1":"785.59317 Da 480.75 s","2":"8.01","3":"786.6002","4":"PC_18:2_18:0_"},{"1":"783.57706 Da 394.11 s","2":"6.57","3":"784.5841","4":"PC_18:2_18:1_"},{"1":"781.56147 Da 327.00 s","2":"5.45","3":"782.5686","4":"PC_18:2_18:2_"},{"1":"805.56146 Da 314.07 s","2":"5.23","3":"806.5684","4":"PC_18:2_20:4_"},{"1":"783.57726 Da 411.38 s","2":"6.86","3":"784.5844","4":"PC_20:3_16:0_"},{"1":"779.54572 Da 299.56 s","2":"4.99","3":"780.5530","4":"PC_20:4_16:1_"},{"1":"805.56167 Da 347.67 s","2":"5.79","3":"806.5684","4":"PC_22:6_16:0_"},{"1":"677.49922 Da 276.47 s","2":"4.61","3":"678.5065","4":"PC_28:0_"},{"1":"705.53062 Da 353.43 s","2":"5.89","3":"706.5379","4":"PC_30:0_"},{"1":"703.51509 Da 285.97 s","2":"4.77","3":"704.5224","4":"PC_30:1_"},{"1":"719.54772 Da 400.78 s","2":"6.68","3":"720.5550","4":"PC_31:0_"},{"1":"717.53058 Da 323.83 s","2":"5.40","3":"718.5379","4":"PC_31:1_"},{"1":"745.56189 Da 412.51 s","2":"6.88","3":"746.5692","4":"PC_33:1_"},{"1":"757.56692 Da 480.27 s","2":"8.00","3":"758.5742","4":"PC_34:2_"},{"1":"755.54623 Da 203.60 s","2":"3.39","3":"756.5535","4":"PC_34:3_"},{"1":"753.53035 Da 289.94 s","2":"4.83","3":"754.5376","4":"PC_34:4_"},{"1":"753.53063 Da 367.13 s","2":"6.12","3":"754.5379","4":"PC_34:4_"},{"1":"773.59445 Da 486.77 s","2":"8.11","3":"774.6017","4":"PC_35:1_"},{"1":"771.57738 Da 421.19 s","2":"7.02","3":"772.5847","4":"PC_35:2_"},{"1":"767.54672 Da 327.88 s","2":"5.46","3":"768.5540","4":"PC_35:4_"},{"1":"783.57642 Da 251.18 s","2":"4.19","3":"784.5837","4":"PC_36:3_"},{"1":"781.56175 Da 348.33 s","2":"5.81","3":"782.5690","4":"PC_36:4_"},{"1":"779.54651 Da 210.55 s","2":"3.51","3":"780.5538","4":"PC_36:5_"},{"1":"779.54532 Da 276.61 s","2":"4.61","3":"780.5526","4":"PC_36:5_"},{"1":"777.53051 Da 272.03 s","2":"4.53","3":"778.5378","4":"PC_36:6_"},{"1":"797.59412 Da 466.19 s","2":"7.77","3":"798.6015","4":"PC_37:3_"},{"1":"795.57757 Da 405.10 s","2":"6.75","3":"796.5848","4":"PC_37:4_"},{"1":"795.57707 Da 419.81 s","2":"7.00","3":"796.5843","4":"PC_37:4_"},{"1":"793.56170 Da 349.00 s","2":"5.82","3":"794.5690","4":"PC_37:5_"},{"1":"791.54617 Da 307.05 s","2":"5.12","3":"792.5534","4":"PC_37:6_"},{"1":"813.62536 Da 504.49 s","2":"8.41","3":"814.6324","4":"PC_38:2_"},{"1":"809.59168 Da 254.52 s","2":"4.24","3":"810.5990","4":"PC_38:4_"},{"1":"809.59199 Da 274.61 s","2":"4.58","3":"810.5993","4":"PC_38:4_"},{"1":"809.59206 Da 442.32 s","2":"7.37","3":"810.6001","4":"PC_38:4_"},{"1":"807.57460 Da 481.01 s","2":"8.02","3":"808.5819","4":"PC_38:5_"},{"1":"803.54598 Da 267.10 s","2":"4.45","3":"804.5533","4":"PC_38:7_"},{"1":"803.54630 Da 282.11 s","2":"4.70","3":"804.5536","4":"PC_38:7_"},{"1":"837.62276 Da 495.74 s","2":"8.26","3":"838.6300","4":"PC_40:4_"},{"1":"835.60801 Da 476.08 s","2":"7.93","3":"836.6153","4":"PC_40:5_"},{"1":"835.60735 Da 487.54 s","2":"8.13","3":"836.6146","4":"PC_40:5_"},{"1":"833.59189 Da 388.07 s","2":"6.47","3":"834.5992","4":"PC_40:6_"},{"1":"831.57658 Da 333.76 s","2":"5.56","3":"832.5839","4":"PC_40:7_"},{"1":"831.57641 Da 354.34 s","2":"5.91","3":"832.5837","4":"PC_40:7_"},{"1":"719.58177 Da 489.26 s","2":"8.15","3":"720.5891","4":"PC_O-32:0_"},{"1":"717.56805 Da 428.17 s","2":"7.14","3":"718.5753","4":"PC_O-32:1_"},{"1":"717.56548 Da 485.12 s","2":"8.09","3":"718.5728","4":"PC_O-32:1_"},{"1":"745.59814 Da 490.99 s","2":"8.18","3":"746.6054","4":"PC_O-34:1_"},{"1":"743.58230 Da 446.50 s","2":"7.44","3":"744.5896","4":"PC_O-34:2_"},{"1":"743.58194 Da 487.89 s","2":"8.13","3":"744.5892","4":"PC_O-34:2_"},{"1":"741.56668 Da 429.50 s","2":"7.16","3":"742.5737","4":"PC_O-34:3_"},{"1":"771.61349 Da 513.68 s","2":"8.56","3":"772.6208","4":"PC_O-36:2_"},{"1":"769.59726 Da 454.49 s","2":"7.57","3":"770.6045","4":"PC_O-36:3_"},{"1":"769.59772 Da 474.95 s","2":"7.92","3":"770.6050","4":"PC_O-36:3_"},{"1":"769.59688 Da 491.80 s","2":"8.20","3":"770.6042","4":"PC_O-36:3_"},{"1":"767.58379 Da 428.92 s","2":"7.15","3":"768.5895","4":"PC_O-36:4_"},{"1":"765.56581 Da 365.21 s","2":"6.09","3":"766.5731","4":"PC_O-36:5_"},{"1":"763.54905 Da 348.26 s","2":"5.80","3":"764.5563","4":"PC_O-36:6_"},{"1":"779.58258 Da 447.00 s","2":"7.45","3":"780.5899","4":"PC_O-37:5_"},{"1":"797.62979 Da 503.60 s","2":"8.39","3":"798.6371","4":"PC_O-38:3_"},{"1":"795.61316 Da 493.39 s","2":"8.22","3":"796.6204","4":"PC_O-38:4_"},{"1":"793.59773 Da 436.10 s","2":"7.27","3":"794.6047","4":"PC_O-38:5_"},{"1":"791.58147 Da 369.44 s","2":"6.16","3":"792.5887","4":"PC_O-38:6_"},{"1":"791.58204 Da 399.46 s","2":"6.66","3":"792.5893","4":"PC_O-38:6_"},{"1":"791.58259 Da 419.45 s","2":"6.99","3":"792.5899","4":"PC_O-38:6_"},{"1":"823.64427 Da 519.50 s","2":"8.66","3":"824.6515","4":"PC_O-40:4_"},{"1":"821.62883 Da 492.33 s","2":"8.21","3":"822.6361","4":"PC_O-40:5_"},{"1":"819.61272 Da 450.43 s","2":"7.51","3":"820.6200","4":"PC_O-40:6_"},{"1":"819.61337 Da 485.12 s","2":"8.09","3":"820.6206","4":"PC_O-40:6_"},{"1":"817.59677 Da 407.19 s","2":"6.79","3":"818.6040","4":"PC_O-40:7_"},{"1":"849.65913 Da 518.48 s","2":"8.64","3":"850.6664","4":"PC_O-42:5_"},{"1":"723.51996 Da 445.07 s","2":"7.42","3":"724.5272","4":"PE_O-36:5_"},{"1":"747.61378 Da 516.26 s","2":"8.60","3":"748.6211","4":"PE_O-37:0_"},{"1":"751.55206 Da 497.88 s","2":"8.30","3":"752.5593","4":"PE_O-38:5_"},{"1":"749.53586 Da 455.30 s","2":"7.59","3":"750.5431","4":"PE_O-38:6_"},{"1":"886.55529 Da 353.74 s","2":"5.90","3":"904.5890","4":"PI_38:4_"},{"1":"646.50447 Da 212.54 s","2":"3.54","3":"647.5117","4":"SM_30:1_"},{"1":"660.52018 Da 239.21 s","2":"3.99","3":"661.5275","4":"SM_31:1_"},{"1":"676.54970 Da 297.26 s","2":"4.95","3":"677.5570","4":"SM_32:0_"},{"1":"674.53529 Da 271.25 s","2":"4.52","3":"675.5431","4":"SM_32:1_"},{"1":"672.52005 Da 220.50 s","2":"3.68","3":"673.5273","4":"SM_32:2_"},{"1":"688.55155 Da 307.64 s","2":"5.13","3":"689.5586","4":"SM_33:1_"},{"1":"686.53592 Da 250.10 s","2":"4.17","3":"687.5432","4":"SM_33:2_"},{"1":"704.58190 Da 383.75 s","2":"6.40","3":"705.5892","4":"SM_34:0_"},{"1":"702.56699 Da 336.97 s","2":"5.62","3":"703.5743","4":"SM_34:1_"},{"1":"702.56755 Da 349.28 s","2":"5.82","3":"703.5743","4":"SM_34:1_"},{"1":"700.55145 Da 281.49 s","2":"4.69","3":"701.5588","4":"SM_34:2_"},{"1":"716.58161 Da 396.85 s","2":"6.61","3":"717.5889","4":"SM_35:1_"},{"1":"714.56718 Da 320.28 s","2":"5.34","3":"715.5745","4":"SM_35:2_"},{"1":"730.59845 Da 450.67 s","2":"7.51","3":"731.6056","4":"SM_36:1_"},{"1":"728.58279 Da 363.48 s","2":"6.06","3":"729.5900","4":"SM_36:2_"},{"1":"726.56712 Da 296.83 s","2":"4.95","3":"727.5744","4":"SM_36:3_"},{"1":"744.61380 Da 485.03 s","2":"8.08","3":"745.6211","4":"SM_37:1_"},{"1":"760.64435 Da 509.76 s","2":"8.50","3":"761.6516","4":"SM_38:0_"},{"1":"758.62953 Da 499.98 s","2":"8.33","3":"759.6366","4":"SM_38:1_"},{"1":"756.61361 Da 467.74 s","2":"7.80","3":"757.6209","4":"SM_38:2_"},{"1":"772.64443 Da 513.92 s","2":"8.57","3":"773.6519","4":"SM_39:1_"},{"1":"788.67463 Da 537.08 s","2":"8.95","3":"789.6819","4":"SM_40:0_"},{"1":"786.66075 Da 527.17 s","2":"8.79","3":"787.6680","4":"SM_40:1_"},{"1":"784.64509 Da 501.55 s","2":"8.36","3":"785.6522","4":"SM_40:2_"},{"1":"782.62403 Da 506.61 s","2":"8.44","3":"783.6313","4":"SM_40:3_"},{"1":"800.67644 Da 541.16 s","2":"9.02","3":"801.6836","4":"SM_41:1_"},{"1":"798.66031 Da 515.45 s","2":"8.59","3":"799.6678","4":"SM_41:2_"},{"1":"814.69181 Da 555.50 s","2":"9.26","3":"815.6991","4":"SM_42:1_"},{"1":"812.67373 Da 513.47 s","2":"8.56","3":"813.6810","4":"SM_42:2_"},{"1":"812.67626 Da 526.06 s","2":"8.77","3":"813.6835","4":"SM_42:2_"},{"1":"810.66020 Da 502.77 s","2":"8.38","3":"811.6677","4":"SM_42:3_"},{"1":"808.64426 Da 479.09 s","2":"7.98","3":"809.6515","4":"SM_42:4_"},{"1":"774.67304 Da 660.41 s","2":"11.01","3":"792.7068","4":"TG_12:0_16:0_18:2_"},{"1":"800.68851 Da 661.21 s","2":"11.02","3":"818.7223","4":"TG_12:0_18:2_18:1_"},{"1":"798.67286 Da 635.19 s","2":"10.59","3":"816.7066","4":"TG_12:0_18:2_18:2_"},{"1":"807.73019 Da 702.80 s","2":"11.71","3":"808.7375","4":"TG_15:0_16:0_16:1_"},{"1":"795.73103 Da 715.76 s","2":"11.93","3":"796.7383","4":"TG_16:0_16:0_14:0_"},{"1":"793.71523 Da 687.92 s","2":"11.47","3":"794.7225","4":"TG_18:1_12:0_16:0_"},{"1":"821.74680 Da 717.18 s","2":"11.95","3":"822.7541","4":"TG_18:1_16:0_14:0_"},{"1":"802.70400 Da 688.87 s","2":"11.48","3":"820.7378","4":"TG_18:2_16:0_14:0_"},{"1":"772.65730 Da 633.00 s","2":"10.55","3":"790.6911","4":"TG_18:2_18:1_10:0_"},{"1":"828.71961 Da 691.27 s","2":"11.52","3":"846.7535","4":"TG_18:2_18:1_14:0_"},{"1":"826.70411 Da 664.95 s","2":"11.08","3":"844.7379","4":"TG_18:2_18:2_14:0_"},{"1":"871.76175 Da 695.01 s","2":"11.58","3":"872.7690","4":"TG_18:2_18:2_16:0_"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
 <section id="notes-quick-descriptives" class="level2">
 <h2 class="anchored" data-anchor-id="notes-quick-descriptives">Notes &amp; Quick Descriptives</h2>
+<p>Direct changes data import file: Boziki_serum_lipids_pos_rawexcel_metadata.xlsx</p>
+<ul>
+<li>Deleted rows having QC entries.</li>
+<li>Changed 1 case having Group value of aPMS to MS as per 1st column Bucket label.</li>
+<li>Changed 3 cases having Group value RIS to values as per 1st column Bucket label.</li>
+<li>Deleted the 2nd column Bucket label.</li>
+<li>Renamed metadata only columns for easier data manipulation and lipid reference.</li>
+<li>Removed Age=2 case with Group value equal to MS i.e.&nbsp;error: Bucket_Label is 26MS in Attikon</li>
+<li>Fixed a few other cells that were supposed to be blank and instead had some character.</li>
+<li>Missing values in clinical metadata are treated as randomly occurring during the data collection process. For the <code>EDSS</code> index, the missing values that correspond to the <code>Controls</code> are filled in with the zero value. However, as per team info, <code>EDSS</code> was used to derive the target grouping for disease severity, hence it is not used in the analysis as a potential predictor. A few <code>Controls</code> cases have a non-zero value of 1 or 2 i.e.&nbsp;low index. These are cases that were initially grouped as <code>CIS</code> but then changed grouping to <code>Controls</code> by the medical team.</li>
+</ul>
+<p>Changes after data are imported:</p>
+<ul>
+<li>To make disease severity group comparison fair and possible, 42 columns were removed from the data. These columns do not contain values in all 3 disease severity groups of Control, CIS and MS, and they are mostly lipid related, but also containing the following clinical metadata columns: <code>Brain_MRI_Lesions</code>, <code>Spinal_MRI_T2W</code> and <code>Spinal_MRI_Lesions</code>.</li>
+<li>Missing values in lipid concentrations correspond to non detected values which can naturally occur during LC/MS processing. These have been substituted with the value of 1 such that when the log transformation is applied they become zero to denote non-detection.</li>
+</ul>
 </section>
 <section id="multiple-imputation" class="level2">
 <h2 class="anchored" data-anchor-id="multiple-imputation">Multiple Imputation</h2>
+<p>The missing values as seen in the data summaries above have been multiply imputed using the <code>random forest</code> algorithm. All below data descriptions, statistical tests and graphics are based on the imputed data. The <code>Modeling &amp; Assessing Lipid Added Value</code> page also utilizes the data after imputation.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-imputation-performance" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-imputation-performance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="metaDat_desc_MS_files/figure-html/fig-imputation-performance-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-imputation-performance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Distribution of the original data (red curve) beside the imputed data (black curves). Besides EDSS, there is a mismatch in the other two variables when comparing the original data with the imputated one. This indicates that for these variables the data might not be <code>MCAR</code>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="data-descriptions-eda" class="level2">
 <h2 class="anchored" data-anchor-id="data-descriptions-eda">Data Descriptions &amp; EDA</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-site-group" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-site-group-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="metaDat_desc_MS_files/figure-html/fig-site-group-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-site-group-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Site Vs Disease Severity Group Distribution. Not all groups are present on each site. The number within each bar and color scheme denotes the corresponding number of cases.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
 </section>
-<section id="age-vs-lipids" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Age Vs Lipids</h1>
-<section id="correlation-tests" class="level3">
-<h3 class="anchored" data-anchor-id="correlation-tests">Correlation Tests</h3>
-<p>&nbsp;</p>
-</section>
-</section>
-<section id="disease-severity-groups-vs-selected-lipids" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Disease Severity Groups Vs Selected Lipids</h1>
+<section id="disease-severity-groups-vs-selected-lipids" class="level2">
+<h2 class="anchored" data-anchor-id="disease-severity-groups-vs-selected-lipids">Disease Severity Groups Vs Selected Lipids</h2>
+<p>Using the selected lipids from the <code>Modeling</code> section i.e.&nbsp;adjusted for clinical information, the univariate or non-adjusted differences amongst the MS disease severity groups are shown in the graphs below.</p>
+<p>Note that p-values shown below are <code>FDR adjusted</code> at <span class="math inline">\(a = 0.2\)</span> for all lipid group comparisons i.e.&nbsp;<code>FDR_algc-adj</code>, but not for any clinical data (see <code>modeling</code> page for this).</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="metaDat_desc_MS_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+[[2]]</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="metaDat_desc_MS_files/figure-html/unnamed-chunk-12-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+[[3]]</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="metaDat_desc_MS_files/figure-html/unnamed-chunk-12-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+[[4]]</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="metaDat_desc_MS_files/figure-html/unnamed-chunk-12-4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+[[5]]</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="metaDat_desc_MS_files/figure-html/unnamed-chunk-12-5.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+[[6]]</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="metaDat_desc_MS_files/figure-html/unnamed-chunk-12-6.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+[[7]]</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="metaDat_desc_MS_files/figure-html/unnamed-chunk-12-7.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+[[8]]</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="metaDat_desc_MS_files/figure-html/unnamed-chunk-12-8.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 </section>

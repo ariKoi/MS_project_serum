@@ -1,0 +1,4342 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.554">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2025-02-28">
+
+<title>MS Project Serum - Modeling &amp; Assessing Lipid Added Value</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<link href="site_libs/jquery-sparkline-2.1.2/jquery.sparkline.css" rel="stylesheet">
+<script src="site_libs/jquery-sparkline-2.1.2/jquery.sparkline.js"></script>
+<script src="site_libs/sparkline-binding-2.0/sparkline.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed slimcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">MS Project Serum</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="dropdown-header">
+ <span class="menu-text">Lipid Biomarkers &amp; Clinical Prediction For Multiple Sclerosis</span></li>
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./metaDat_desc_MS.html">Sections</a></li><li class="breadcrumb-item"><a href="./modeling_MS.html">Modeling</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Sections</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./metaDat_desc_MS.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Processing &amp; EDA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modeling_MS.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Modeling</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Analysis</h2>
+   
+  <ul>
+  <li><a href="#scope" id="toc-scope" class="nav-link active" data-scroll-target="#scope"><span class="header-section-number">1</span> Scope</a></li>
+  <li><a href="#information-on-batch-quality" id="toc-information-on-batch-quality" class="nav-link" data-scroll-target="#information-on-batch-quality"><span class="header-section-number">2</span> Information on batch quality</a></li>
+  <li><a href="#base-clinical-data-model" id="toc-base-clinical-data-model" class="nav-link" data-scroll-target="#base-clinical-data-model"><span class="header-section-number">3</span> Base Clinical Data &amp; Model</a>
+  <ul class="collapse">
+  <li><a href="#data-summaries" id="toc-data-summaries" class="nav-link" data-scroll-target="#data-summaries">Data Summaries</a></li>
+  <li><a href="#calibration" id="toc-calibration" class="nav-link" data-scroll-target="#calibration">Calibration</a></li>
+  <li><a href="#partial-dependence-plots" id="toc-partial-dependence-plots" class="nav-link" data-scroll-target="#partial-dependence-plots">Partial Dependence Plots</a></li>
+  </ul></li>
+  <li><a href="#added-value-from-lipids" id="toc-added-value-from-lipids" class="nav-link" data-scroll-target="#added-value-from-lipids"><span class="header-section-number">4</span> Added Value From Lipids</a>
+  <ul class="collapse">
+  <li><a href="#sec-LR1" id="toc-sec-LR1" class="nav-link" data-scroll-target="#sec-LR1">Model Likelihood Ratio Statistic (LR)</a></li>
+  <li><a href="#calibration-1" id="toc-calibration-1" class="nav-link" data-scroll-target="#calibration-1">Calibration</a></li>
+  <li><a href="#partial-dependence-plots-1" id="toc-partial-dependence-plots-1" class="nav-link" data-scroll-target="#partial-dependence-plots-1">Partial Dependence Plots</a>
+  <ul class="collapse">
+  <li><a href="#sm_422_" id="toc-sm_422_" class="nav-link" data-scroll-target="#sm_422_">SM_42:2_</a></li>
+  <li><a href="#lip1172" id="toc-lip1172" class="nav-link" data-scroll-target="#lip1172">lip1172</a></li>
+  </ul></li>
+  <li><a href="#relative-explained-variation" id="toc-relative-explained-variation" class="nav-link" data-scroll-target="#relative-explained-variation">Relative Explained Variation</a></li>
+  <li><a href="#variable-effects" id="toc-variable-effects" class="nav-link" data-scroll-target="#variable-effects">Variable Effects</a>
+  <ul class="collapse">
+  <li><a href="#model-2" id="toc-model-2" class="nav-link" data-scroll-target="#model-2">Model 2</a></li>
+  <li><a href="#model-3" id="toc-model-3" class="nav-link" data-scroll-target="#model-3">Model 3</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#binary-endpoint" id="toc-binary-endpoint" class="nav-link" data-scroll-target="#binary-endpoint"><span class="header-section-number">5</span> Binary Endpoint</a></li>
+  <li><a href="#network-graph-estimates" id="toc-network-graph-estimates" class="nav-link" data-scroll-target="#network-graph-estimates"><span class="header-section-number">6</span> Network Graph Estimates</a>
+  <ul class="collapse">
+  <li><a href="#model-4" id="toc-model-4" class="nav-link" data-scroll-target="#model-4">Model 4</a>
+  <ul class="collapse">
+  <li><a href="#relative-explained-variation-1" id="toc-relative-explained-variation-1" class="nav-link" data-scroll-target="#relative-explained-variation-1">Relative Explained Variation</a></li>
+  <li><a href="#variable-effects-1" id="toc-variable-effects-1" class="nav-link" data-scroll-target="#variable-effects-1">Variable Effects</a></li>
+  <li><a href="#partial-dependence-plots-2" id="toc-partial-dependence-plots-2" class="nav-link" data-scroll-target="#partial-dependence-plots-2">Partial Dependence Plots</a></li>
+  </ul></li>
+  <li><a href="#adding-more-lipids-into-the-model" id="toc-adding-more-lipids-into-the-model" class="nav-link" data-scroll-target="#adding-more-lipids-into-the-model">Adding More Lipids Into The Model</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./metaDat_desc_MS.html">Sections</a></li><li class="breadcrumb-item"><a href="./modeling_MS.html">Modeling</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Modeling &amp; Assessing Lipid Added Value</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-body">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 28, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="scope" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Scope</h1>
+<p>Using Multiple Sclerosis severity data, analysis and identification of potential lipid biomarkers after adjustment for clinical information. Majority of lipids are unknown. Development of a clinical prediction model.</p>
+</section>
+<section id="information-on-batch-quality" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Information on batch quality</h1>
+<p>For the data collection site AUTH, batch1 lipid concentration data have been processed with lower expected quality than batch2 data.</p>
+</section>
+<section id="base-clinical-data-model" class="level1 page-columns page-full" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Base Clinical Data &amp; Model</h1>
+<p>In order to account for the different batch quality data from the AUTH collection site, the performance of two models is compared:</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>The models considered are of ordinal regression type in order to properly account for disease severity in the outcome.</p>
+</div></div><ol type="1">
+<li>A model with all data</li>
+<li>A model excluding the AUTH batch1 cases, which are suspected to have lower lipid concentration quality</li>
+</ol>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>The AUTH_batch1 cases are expected to contain errors in data processing i.e.&nbsp;lipid related samples were frozen and refrozen again which lead to loss of quality in the measurements. Then a second batch was decided to be generated from a different group of individuals i.e.&nbsp;AUTH_batch2</p>
+</div></div><p>The model with the best out of sample performance as measured by the <code>Somers Dxy</code> index is then chosen as the base model, and to be used in further analysis.</p>
+<p>For both models 1 and 2, a variable backward elimination procedure was performed, and in both models it resulted with the selection of two variables based on their importance: <code>Age</code> and <code>Albumin_CSF</code>. After accounting for variable selection and sampling variation, the <code>Somers Dxy</code> index was <code>24%</code> and <code>33%</code> respectively for the two models. These correspond to C rank discrimination indeces of <code>62.07%</code> and <code>66.52%</code> respectively.</p>
+<p>Hence model 2 was selected as the base model, having a C rank discrimination index of <code>66.52%</code>.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Besides model performance, there are two more reasons for model 2 selection: 1) The severity groups are more balanced i.e.&nbsp;the AUTH_batch1 that’s removed contains only 2 Controls with most cases being of MS type. 2) Since the data processing that led to the AUTH_batch1 contained errors, it is not expected to be repeated again, and hence future potential cases from the AUTH site will always follow the AUTH_batch1 procedure for data generation.</p>
+</div></div><p>Below, probability calibration plot as well as estimated effect plots are shown.</p>
+<section id="data-summaries" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="data-summaries">Data Summaries</h2>
+<p>After multiple imputation, removal of the AUTH_batch1 cases and variable selection, the updated data descriptions are shown below.</p>
+<div class="cell">
+<div class="cell-output-display">
+<span id="htmlwidget-eecbe9eee48faf4748e0" class="sparkline html-widget"></span>
+<script type="application/json" data-for="htmlwidget-eecbe9eee48faf4748e0">{"x":{"values":0,"options":{"height":20,"width":60},"width":60,"height":20},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset column-screen page-columns page-full">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Continuous</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Categorical</a></li></ul>
+<div class="tab-content column-screen">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<pre data-html=""><code><div id="wnidvyrnsw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wnidvyrnsw table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#wnidvyrnsw thead, #wnidvyrnsw tbody, #wnidvyrnsw tfoot, #wnidvyrnsw tr, #wnidvyrnsw td, #wnidvyrnsw th {
+  border-style: none;
+}
+
+#wnidvyrnsw p {
+  margin: 0;
+  padding: 0;
+}
+
+#wnidvyrnsw .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#wnidvyrnsw .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#wnidvyrnsw .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#wnidvyrnsw .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#wnidvyrnsw .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wnidvyrnsw .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wnidvyrnsw .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wnidvyrnsw .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#wnidvyrnsw .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#wnidvyrnsw .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#wnidvyrnsw .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#wnidvyrnsw .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#wnidvyrnsw .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#wnidvyrnsw .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#wnidvyrnsw .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#wnidvyrnsw .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#wnidvyrnsw .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#wnidvyrnsw .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#wnidvyrnsw .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wnidvyrnsw .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#wnidvyrnsw .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#wnidvyrnsw .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#wnidvyrnsw .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wnidvyrnsw .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#wnidvyrnsw .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#wnidvyrnsw .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wnidvyrnsw .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wnidvyrnsw .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#wnidvyrnsw .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wnidvyrnsw .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#wnidvyrnsw .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wnidvyrnsw .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wnidvyrnsw .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wnidvyrnsw .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wnidvyrnsw .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wnidvyrnsw .gt_left {
+  text-align: left;
+}
+
+#wnidvyrnsw .gt_center {
+  text-align: center;
+}
+
+#wnidvyrnsw .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#wnidvyrnsw .gt_font_normal {
+  font-weight: normal;
+}
+
+#wnidvyrnsw .gt_font_bold {
+  font-weight: bold;
+}
+
+#wnidvyrnsw .gt_font_italic {
+  font-style: italic;
+}
+
+#wnidvyrnsw .gt_super {
+  font-size: 65%;
+}
+
+#wnidvyrnsw .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#wnidvyrnsw .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#wnidvyrnsw .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#wnidvyrnsw .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#wnidvyrnsw .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#wnidvyrnsw .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#wnidvyrnsw .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" style="table-layout: fixed;" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <colgroup>
+    <col>
+    <col>
+    <col>
+    <col>
+    <col>
+    <col>
+    <col>
+    <col>
+    <col>
+    <col>
+    <col style="width:220px;">
+    <col>
+  </colgroup>
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="12" class="gt_heading gt_title gt_font_normal" style=""><strong><code>baseModelData</code> Descriptives</strong></td>
+    </tr>
+    <tr class="gt_heading">
+      <td colspan="12" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">2 Continous Variables of 3 Variables, 143 Observations</td>
+    </tr>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Variable">Variable</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Label">Label</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Units">Units</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center;" scope="col" id="n">n</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center;" scope="col" id="Missing">Missing</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center;" scope="col" id="Distinct">Distinct</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center;" scope="col" id="Info">Info</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center;" scope="col" id="Mean">Mean</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center;" scope="col" id="pMedian">pMedian</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center;" scope="col" id="Gini <span style=&quot;text-decoration: overline&quot;>|Δ|</span>">Gini <span style="text-decoration: overline">|Δ|</span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id=" "> </th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Quantiles<br><font size=&quot;1&quot;> .05 </font><font size=&quot;2&quot;> .10 </font><font size=&quot;3&quot;> .25 </font><font size=&quot;4&quot;><strong> .50 </strong></font><font size=&quot;3&quot;> .75 </font><font size=&quot;2&quot;> .90 </font><font size=&quot;1&quot;> .95 </font>">Quantiles<br><font size="1"> .05 </font><font size="2"> .10 </font><font size="3"> .25 </font><font size="4"><strong> .50 </strong></font><font size="3"> .75 </font><font size="2"> .90 </font><font size="1"> .95 </font></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="Variable" class="gt_row gt_left">Age</td>
+<td headers="Label" class="gt_row gt_left" style="font-size: small;"></td>
+<td headers="Units" class="gt_row gt_left" style="font-family: arial; font-size: small;"></td>
+<td headers="n" class="gt_row gt_right">143</td>
+<td headers="Missing" class="gt_row gt_right">0</td>
+<td headers="Distinct" class="gt_row gt_right">44</td>
+<td headers="Info" class="gt_row gt_right">0.999</td>
+<td headers="Mean" class="gt_row gt_right">35.08</td>
+<td headers="pMedian" class="gt_row gt_right">34.5</td>
+<td headers="Gmd" class="gt_row gt_right">12.29</td>
+<td headers=" " class="gt_row gt_right"><span id="htmlwidget-d38370bbc61d52d6720a" class="sparkline html-widget"></span>
+<script type="application/json" data-for="htmlwidget-d38370bbc61d52d6720a">{"x":{"values":[1,2,2,4,1,2,6,6,3,4,7,6,10,4,5,9,7,6,3,1,1,5,3,1,3,7,2,2,4,3,3,2,2,4,2,0,1,1,1,0,1,0,1,1,0,1,0,0,1,2],"options":{"type":"bar","chartRangeMin":0,"zeroColor":"lightgray","barWidth":1,"barSpacing":1,"tooltipFormatter":"function(sparkline, options, field){\n       debugger;\n       return [\"Bin: [17, 18)<br>Observed:<br>17<br>Proportion:0.007 (n=1)<br>Cumulative:0.007\",\"Bin: [18, 19)<br>Observed:<br>18 (2)<br>Proportion:0.014 (n=2)<br>Cumulative:0.021\",\"Bin: [19, 20)<br>Observed:<br>19 (2)<br>Proportion:0.014 (n=2)<br>Cumulative:0.035\",\"Bin: [20, 21)<br>Observed:<br>20 (4)<br>Proportion:0.028 (n=4)<br>Cumulative:0.0629\",\"Bin: [21, 22)<br>Observed:<br>21<br>Proportion:0.007 (n=1)<br>Cumulative:0.0699\",\"Bin: [22, 23)<br>Observed:<br>22 (2)<br>Proportion:0.014 (n=2)<br>Cumulative:0.0839\",\"Bin: [23, 24)<br>Observed:<br>23 (6)<br>Proportion:0.042 (n=6)<br>Cumulative:0.1259\",\"Bin: [24, 25)<br>Observed:<br>24 (6)<br>Proportion:0.042 (n=6)<br>Cumulative:0.1678\",\"Bin: [25, 26)<br>Observed:<br>25 (3)<br>Proportion:0.021 (n=3)<br>Cumulative:0.1888\",\"Bin: [26, 27)<br>Observed:<br>26 (4)<br>Proportion:0.028 (n=4)<br>Cumulative:0.2168\",\"Bin: [27, 28)<br>Observed:<br>27 (7)<br>Proportion:0.049 (n=7)<br>Cumulative:0.2657\",\"Bin: [28, 29)<br>Observed:<br>28 (6)<br>Proportion:0.042 (n=6)<br>Cumulative:0.3077\",\"Bin: [29, 30)<br>Observed:<br>29 (10)<br>Proportion:0.0699 (n=10)<br>Cumulative:0.3776\",\"Bin: [30, 31)<br>Observed:<br>30 (4)<br>Proportion:0.028 (n=4)<br>Cumulative:0.4056\",\"Bin: [31, 32)<br>Observed:<br>31 (5)<br>Proportion:0.035 (n=5)<br>Cumulative:0.4406\",\"Bin: [32, 33)<br>Observed:<br>32 (9)<br>Proportion:0.0629 (n=9)<br>Cumulative:0.5035\",\"Bin: [33, 34)<br>Observed:<br>33 (7)<br>Proportion:0.049 (n=7)<br>Cumulative:0.5524\",\"Bin: [34, 35)<br>Observed:<br>34 (6)<br>Proportion:0.042 (n=6)<br>Cumulative:0.5944\",\"Bin: [35, 36)<br>Observed:<br>35 (3)<br>Proportion:0.021 (n=3)<br>Cumulative:0.6154\",\"Bin: [36, 37)<br>Observed:<br>36<br>Proportion:0.007 (n=1)<br>Cumulative:0.6224\",\"Bin: [37, 38)<br>Observed:<br>37<br>Proportion:0.007 (n=1)<br>Cumulative:0.6294\",\"Bin: [38, 39)<br>Observed:<br>38 (5)<br>Proportion:0.035 (n=5)<br>Cumulative:0.6643\",\"Bin: [39, 40)<br>Observed:<br>39 (3)<br>Proportion:0.021 (n=3)<br>Cumulative:0.6853\",\"Bin: [40, 41)<br>Observed:<br>40<br>Proportion:0.007 (n=1)<br>Cumulative:0.6923\",\"Bin: [41, 42)<br>Observed:<br>41 (3)<br>Proportion:0.021 (n=3)<br>Cumulative:0.7133\",\"Bin: [42, 43)<br>Observed:<br>42 (7)<br>Proportion:0.049 (n=7)<br>Cumulative:0.7622\",\"Bin: [43, 44)<br>Observed:<br>43 (2)<br>Proportion:0.014 (n=2)<br>Cumulative:0.7762\",\"Bin: [44, 45)<br>Observed:<br>44 (2)<br>Proportion:0.014 (n=2)<br>Cumulative:0.7902\",\"Bin: [45, 46)<br>Observed:<br>45 (4)<br>Proportion:0.028 (n=4)<br>Cumulative:0.8182\",\"Bin: [46, 47)<br>Observed:<br>46 (3)<br>Proportion:0.021 (n=3)<br>Cumulative:0.8392\",\"Bin: [47, 48)<br>Observed:<br>47 (3)<br>Proportion:0.021 (n=3)<br>Cumulative:0.8601\",\"Bin: [48, 49)<br>Observed:<br>48 (2)<br>Proportion:0.014 (n=2)<br>Cumulative:0.8741\",\"Bin: [49, 50)<br>Observed:<br>49 (2)<br>Proportion:0.014 (n=2)<br>Cumulative:0.8881\",\"Bin: [50, 51)<br>Observed:<br>50 (4)<br>Proportion:0.028 (n=4)<br>Cumulative:0.9161\",\"Bin: [51, 52)<br>Observed:<br>51 (2)<br>Proportion:0.014 (n=2)<br>Cumulative:0.9301\",\"\",\"Bin: [53, 54)<br>Observed:<br>53<br>Proportion:0.007 (n=1)<br>Cumulative:0.9371\",\"Bin: [54, 55)<br>Observed:<br>54<br>Proportion:0.007 (n=1)<br>Cumulative:0.9441\",\"Bin: [55, 56)<br>Observed:<br>55<br>Proportion:0.007 (n=1)<br>Cumulative:0.951\",\"\",\"Bin: [57, 58)<br>Observed:<br>57<br>Proportion:0.007 (n=1)<br>Cumulative:0.958\",\"\",\"Bin: [59, 60)<br>Observed:<br>59<br>Proportion:0.007 (n=1)<br>Cumulative:0.965\",\"Bin: [60, 61)<br>Observed:<br>60<br>Proportion:0.007 (n=1)<br>Cumulative:0.972\",\"\",\"Bin: [62, 63)<br>Observed:<br>62<br>Proportion:0.007 (n=1)<br>Cumulative:0.979\",\"\",\"\",\"Bin: [65, 66]<br>Observed:<br>66<br>Proportion:0.007 (n=1)<br>Cumulative:0.986\",\"Q<sub>0.99<\\/sub>:69<br>Bin: (66, 69]<br>Observed:<br>69 (2)<br>Proportion:0.014 (n=2)<br>Cumulative:1\"][field[0].offset];\n       }","height":20,"width":200},"width":200,"height":20},"evals":["options.tooltipFormatter"],"jsHooks":[]}</script></td>
+<td headers="Quantiles" class="gt_row gt_center"><font size="1">  20.0  </font><font size="2">  23.0  </font><font size="3">  27.0  </font><font size="4"><strong>  32.0  </strong></font><font size="3">  42.0  </font><font size="2">  50.0  </font><font size="1">  54.9  </font></td></tr>
+    <tr><td headers="Variable" class="gt_row gt_left">Albumin_CSF</td>
+<td headers="Label" class="gt_row gt_left" style="font-size: small;">The level of CSF albumin is used as a reference to indicate increased permeability of the blood capillaries. CSF IgG is frequently elevated in multiple sclerosis, but normal levels do not rule out multiple sclerosis. Reference is 5-34 mg/dL</td>
+<td headers="Units" class="gt_row gt_left" style="font-family: arial; font-size: small;">mg/dL</td>
+<td headers="n" class="gt_row gt_right">143</td>
+<td headers="Missing" class="gt_row gt_right">0</td>
+<td headers="Distinct" class="gt_row gt_right">128</td>
+<td headers="Info" class="gt_row gt_right">1.000</td>
+<td headers="Mean" class="gt_row gt_right">34.32</td>
+<td headers="pMedian" class="gt_row gt_right">33.73</td>
+<td headers="Gmd" class="gt_row gt_right">13.76</td>
+<td headers=" " class="gt_row gt_right"><span id="htmlwidget-5f83b75bc6fc9f212e81" class="sparkline html-widget"></span>
+<script type="application/json" data-for="htmlwidget-5f83b75bc6fc9f212e81">{"x":{"values":[2,1,0,1,0,1,0,2,2,1,4,4,1,0,2,0,1,3,1,2,1,1,1,3,4,0,5,2,0,3,0,4,1,2,1,3,2,0,4,1,3,0,4,3,3,3,1,1,2,0,1,4,1,2,7,4,5,1,3,4,1,2,1,0,0,2,1,0,1,0,2,0,2,0,0,2,1,0,0,0,1,0,1,0,0,0,0,1,1,0,1,0,0,1,0,0,1,0,0,0,0,1,2],"options":{"type":"bar","chartRangeMin":0,"zeroColor":"lightgray","barWidth":1,"barSpacing":1,"tooltipFormatter":"function(sparkline, options, field){\n       debugger;\n       return [\"Q<sub>0.01<\\/sub>:11.2<br>Bin: [9.42, 13.5)<br>Observed:<br>9.42<br>11.2<br>Proportion:0.014 (n=2)<br>Cumulative:0.014\",\"Bin: [13.5, 14)<br>Observed:<br>13.9<br>Proportion:0.007 (n=1)<br>Cumulative:0.021\",\"\",\"Bin: [14.5, 15)<br>Observed:<br>14.8<br>Proportion:0.007 (n=1)<br>Cumulative:0.028\",\"\",\"Bin: [15.5, 16)<br>Observed:<br>15.5<br>Proportion:0.007 (n=1)<br>Cumulative:0.035\",\"\",\"Bin: [16.5, 17)<br>Observed:<br>16.5<br>16.6<br>Proportion:0.014 (n=2)<br>Cumulative:0.049\",\"Bin: [17, 17.5)<br>Observed:<br>17.1<br>17.4<br>Proportion:0.014 (n=2)<br>Cumulative:0.0629\",\"Bin: [17.5, 18)<br>Observed:<br>17.9<br>Proportion:0.007 (n=1)<br>Cumulative:0.0699\",\"Bin: [18, 18.5)<br>Observed:<br>18.1<br>18.2 (2)<br>18.3<br>Proportion:0.028 (n=4)<br>Cumulative:0.0979\",\"Bin: [18.5, 19)<br>Observed:<br>18.5<br>18.7<br>18.8<br>18.9<br>Proportion:0.028 (n=4)<br>Cumulative:0.1259\",\"Bin: [19, 19.5)<br>Observed:<br>19.2<br>Proportion:0.007 (n=1)<br>Cumulative:0.1329\",\"\",\"Bin: [20, 20.5)<br>Observed:<br>20.1<br>20.2<br>Proportion:0.014 (n=2)<br>Cumulative:0.1469\",\"\",\"Bin: [21, 21.5)<br>Observed:<br>21.2<br>Proportion:0.007 (n=1)<br>Cumulative:0.1538\",\"Bin: [21.5, 22)<br>Observed:<br>21.5<br>21.7 (2)<br>Proportion:0.021 (n=3)<br>Cumulative:0.1748\",\"Bin: [22, 22.5)<br>Observed:<br>22.4<br>Proportion:0.007 (n=1)<br>Cumulative:0.1818\",\"Bin: [22.5, 23)<br>Observed:<br>22.5<br>22.6<br>Proportion:0.014 (n=2)<br>Cumulative:0.1958\",\"Bin: [23, 23.5)<br>Observed:<br>23<br>Proportion:0.007 (n=1)<br>Cumulative:0.2028\",\"Bin: [23.5, 24)<br>Observed:<br>23.5<br>Proportion:0.007 (n=1)<br>Cumulative:0.2098\",\"Bin: [24, 24.5)<br>Observed:<br>24<br>Proportion:0.007 (n=1)<br>Cumulative:0.2168\",\"Bin: [24.5, 25)<br>Observed:<br>24.7<br>24.8<br>24.9<br>Proportion:0.021 (n=3)<br>Cumulative:0.2378\",\"Bin: [25, 25.5)<br>Observed:<br>25 (2)<br>25.3 (2)<br>Proportion:0.028 (n=4)<br>Cumulative:0.2657\",\"\",\"Bin: [26, 26.5)<br>Observed:<br>26<br>26.03<br>26.2 (3)<br>Proportion:0.035 (n=5)<br>Cumulative:0.3007\",\"Bin: [26.5, 27)<br>Observed:<br>26.6<br>26.9<br>Proportion:0.014 (n=2)<br>Cumulative:0.3147\",\"\",\"Bin: [27.5, 28)<br>Observed:<br>27.6<br>27.8<br>27.9<br>Proportion:0.021 (n=3)<br>Cumulative:0.3357\",\"\",\"Bin: [28.5, 29)<br>Observed:<br>28.7<br>28.9 (3)<br>Proportion:0.028 (n=4)<br>Cumulative:0.3636\",\"Bin: [29, 29.5)<br>Observed:<br>29.44<br>Proportion:0.007 (n=1)<br>Cumulative:0.3706\",\"Bin: [29.5, 30)<br>Observed:<br>29.5 (2)<br>Proportion:0.014 (n=2)<br>Cumulative:0.3846\",\"Bin: [30, 30.5)<br>Observed:<br>30<br>Proportion:0.007 (n=1)<br>Cumulative:0.3916\",\"Bin: [30.5, 31)<br>Observed:<br>30.7 (2)<br>30.9<br>Proportion:0.021 (n=3)<br>Cumulative:0.4126\",\"Bin: [31, 31.5)<br>Observed:<br>31 (2)<br>Proportion:0.014 (n=2)<br>Cumulative:0.4266\",\"\",\"Bin: [32, 32.5)<br>Observed:<br>32<br>32.1<br>32.23<br>32.33<br>Proportion:0.028 (n=4)<br>Cumulative:0.4545\",\"Bin: [32.5, 33)<br>Observed:<br>32.6<br>Proportion:0.007 (n=1)<br>Cumulative:0.4615\",\"Bin: [33, 33.5)<br>Observed:<br>33.16<br>33.2<br>33.4<br>Proportion:0.021 (n=3)<br>Cumulative:0.4825\",\"\",\"Bin: [34, 34.5)<br>Observed:<br>34 (3)<br>34.1<br>Proportion:0.028 (n=4)<br>Cumulative:0.5105\",\"Bin: [34.5, 35)<br>Observed:<br>34.7<br>34.8<br>34.99<br>Proportion:0.021 (n=3)<br>Cumulative:0.5315\",\"Bin: [35, 35.5)<br>Observed:<br>35<br>35.1<br>35.2<br>Proportion:0.021 (n=3)<br>Cumulative:0.5524\",\"Bin: [35.5, 36)<br>Observed:<br>35.56<br>35.8<br>35.9<br>Proportion:0.021 (n=3)<br>Cumulative:0.5734\",\"Bin: [36, 36.5)<br>Observed:<br>36.4<br>Proportion:0.007 (n=1)<br>Cumulative:0.5804\",\"Bin: [36.5, 37)<br>Observed:<br>36.91<br>Proportion:0.007 (n=1)<br>Cumulative:0.5874\",\"Bin: [37, 37.5)<br>Observed:<br>37.1<br>37.3<br>Proportion:0.014 (n=2)<br>Cumulative:0.6014\",\"\",\"Bin: [38, 38.5)<br>Observed:<br>38.47<br>Proportion:0.007 (n=1)<br>Cumulative:0.6084\",\"Bin: [38.5, 39)<br>Observed:<br>38.6<br>38.73<br>38.79<br>38.91<br>Proportion:0.028 (n=4)<br>Cumulative:0.6364\",\"Bin: [39, 39.5)<br>Observed:<br>39.31<br>Proportion:0.007 (n=1)<br>Cumulative:0.6434\",\"Bin: [39.5, 40)<br>Observed:<br>39.5<br>39.86<br>Proportion:0.014 (n=2)<br>Cumulative:0.6573\",\"Bin: [40, 40.5)<br>Observed:<br>40<br>40.04<br>40.2 (2)<br>40.21<br>40.27<br>40.41<br>Proportion:0.049 (n=7)<br>Cumulative:0.7063\",\"Bin: [40.5, 41)<br>Observed:<br>40.6<br>40.71<br>40.84<br>40.97<br>Proportion:0.028 (n=4)<br>Cumulative:0.7343\",\"Bin: [41, 41.5)<br>Observed:<br>41<br>41.2<br>41.21<br>41.27<br>41.36<br>Proportion:0.035 (n=5)<br>Cumulative:0.7692\",\"Bin: [41.5, 42)<br>Observed:<br>41.69<br>Proportion:0.007 (n=1)<br>Cumulative:0.7762\",\"Bin: [42, 42.5)<br>Observed:<br>42.16<br>42.33<br>42.41<br>Proportion:0.021 (n=3)<br>Cumulative:0.7972\",\"Bin: [42.5, 43)<br>Observed:<br>42.56<br>42.87<br>42.99 (2)<br>Proportion:0.028 (n=4)<br>Cumulative:0.8252\",\"Bin: [43, 43.5)<br>Observed:<br>43<br>Proportion:0.007 (n=1)<br>Cumulative:0.8322\",\"Bin: [43.5, 44)<br>Observed:<br>43.54<br>43.8<br>Proportion:0.014 (n=2)<br>Cumulative:0.8462\",\"Bin: [44, 44.5)<br>Observed:<br>44.01<br>Proportion:0.007 (n=1)<br>Cumulative:0.8531\",\"\",\"\",\"Bin: [45.5, 46)<br>Observed:<br>45.7<br>45.8<br>Proportion:0.014 (n=2)<br>Cumulative:0.8671\",\"Bin: [46, 46.5)<br>Observed:<br>46.44<br>Proportion:0.007 (n=1)<br>Cumulative:0.8741\",\"\",\"Bin: [47, 47.5)<br>Observed:<br>47.44<br>Proportion:0.007 (n=1)<br>Cumulative:0.8811\",\"\",\"Bin: [48, 48.5)<br>Observed:<br>48<br>48.3<br>Proportion:0.014 (n=2)<br>Cumulative:0.8951\",\"\",\"Bin: [49, 49.5)<br>Observed:<br>49.1<br>49.3<br>Proportion:0.014 (n=2)<br>Cumulative:0.9091\",\"\",\"\",\"Bin: [50.5, 51)<br>Observed:<br>50.5<br>50.9<br>Proportion:0.014 (n=2)<br>Cumulative:0.9231\",\"Bin: [51, 51.5)<br>Observed:<br>51.2<br>Proportion:0.007 (n=1)<br>Cumulative:0.9301\",\"\",\"\",\"\",\"Bin: [53, 53.5)<br>Observed:<br>53<br>Proportion:0.007 (n=1)<br>Cumulative:0.9371\",\"\",\"Bin: [54, 54.5)<br>Observed:<br>54.1<br>Proportion:0.007 (n=1)<br>Cumulative:0.9441\",\"\",\"\",\"\",\"\",\"Bin: [56.5, 57)<br>Observed:<br>56.8<br>Proportion:0.007 (n=1)<br>Cumulative:0.951\",\"Bin: [57, 57.5)<br>Observed:<br>57<br>Proportion:0.007 (n=1)<br>Cumulative:0.958\",\"\",\"Bin: [58, 58.5)<br>Observed:<br>58.4<br>Proportion:0.007 (n=1)<br>Cumulative:0.965\",\"\",\"\",\"Bin: [59.5, 60)<br>Observed:<br>59.5<br>Proportion:0.007 (n=1)<br>Cumulative:0.972\",\"\",\"\",\"Bin: [61, 61.5)<br>Observed:<br>61<br>Proportion:0.007 (n=1)<br>Cumulative:0.979\",\"\",\"\",\"\",\"\",\"Bin: [63.5, 64]<br>Observed:<br>63.8<br>Proportion:0.007 (n=1)<br>Cumulative:0.986\",\"Q<sub>0.99<\\/sub>:77<br>Bin: (64, 83]<br>Observed:<br>77<br>83<br>Proportion:0.014 (n=2)<br>Cumulative:1\"][field[0].offset];\n       }","height":20,"width":200},"width":200,"height":20},"evals":["options.tooltipFormatter"],"jsHooks":[]}</script></td>
+<td headers="Quantiles" class="gt_row gt_center"><font size="1">  17.13  </font><font size="2">  18.54  </font><font size="3">  25.15  </font><font size="4"><strong>  34.00  </strong></font><font size="3">  41.20  </font><font size="2">  48.94  </font><font size="1">  56.53  </font></td></tr>
+  </tbody>
+  
+  
+</table>
+</div></code></pre>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<pre data-html=""><code><div id="optomalwyv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#optomalwyv table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#optomalwyv thead, #optomalwyv tbody, #optomalwyv tfoot, #optomalwyv tr, #optomalwyv td, #optomalwyv th {
+  border-style: none;
+}
+
+#optomalwyv p {
+  margin: 0;
+  padding: 0;
+}
+
+#optomalwyv .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#optomalwyv .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#optomalwyv .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#optomalwyv .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#optomalwyv .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#optomalwyv .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#optomalwyv .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#optomalwyv .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#optomalwyv .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#optomalwyv .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#optomalwyv .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#optomalwyv .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#optomalwyv .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#optomalwyv .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#optomalwyv .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#optomalwyv .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#optomalwyv .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#optomalwyv .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#optomalwyv .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#optomalwyv .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#optomalwyv .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#optomalwyv .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#optomalwyv .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#optomalwyv .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#optomalwyv .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#optomalwyv .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#optomalwyv .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#optomalwyv .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#optomalwyv .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#optomalwyv .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#optomalwyv .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#optomalwyv .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#optomalwyv .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#optomalwyv .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#optomalwyv .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#optomalwyv .gt_left {
+  text-align: left;
+}
+
+#optomalwyv .gt_center {
+  text-align: center;
+}
+
+#optomalwyv .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#optomalwyv .gt_font_normal {
+  font-weight: normal;
+}
+
+#optomalwyv .gt_font_bold {
+  font-weight: bold;
+}
+
+#optomalwyv .gt_font_italic {
+  font-style: italic;
+}
+
+#optomalwyv .gt_super {
+  font-size: 65%;
+}
+
+#optomalwyv .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#optomalwyv .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#optomalwyv .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#optomalwyv .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#optomalwyv .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#optomalwyv .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#optomalwyv .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="6" class="gt_heading gt_title gt_font_normal" style=""><strong><code>baseModelData</code> Descriptives</strong></td>
+    </tr>
+    <tr class="gt_heading">
+      <td colspan="6" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">1 Categorical Variables of 3 Variables, 143 Observations</td>
+    </tr>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Variable">Variable</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Label">Label</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center;" scope="col" id="n">n</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center;" scope="col" id="Missing">Missing</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center;" scope="col" id="Distinct">Distinct</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=" "> </th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="Variable" class="gt_row gt_left">Group</td>
+<td headers="Label" class="gt_row gt_left" style="font-size: small;">MS Disease Severity</td>
+<td headers="n" class="gt_row gt_right">143</td>
+<td headers="Missing" class="gt_row gt_right">0</td>
+<td headers="Distinct" class="gt_row gt_right">3</td>
+<td headers="tab" class="gt_row gt_left" style="font-size: x-small;"><span id="htmlwidget-f6e40c18417f3a1f082b" class="sparkline html-widget"></span>
+<script type="application/json" data-for="htmlwidget-f6e40c18417f3a1f082b">{"x":{"values":[99,29,15],"options":{"type":"bar","chartRangeMin":0,"zeroColor":"lightgray","barWidth":3,"barSpacing":2,"tooltipFormatter":"function(sparkline, options, field){\n       debugger;\n       return [\"MS<br>Proportion:0.6923 (n=99)\",\"CIS<br>Proportion:0.2028 (n=29)\",\"Control<br>Proportion:0.1049 (n=15)\"][field[0].offset];\n       }","height":20,"width":20},"width":20,"height":20},"evals":["options.tooltipFormatter"],"jsHooks":[]}</script></td></tr>
+  </tbody>
+  
+  
+</table>
+</div></code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="calibration" class="level2">
+<h2 class="anchored" data-anchor-id="calibration">Calibration</h2>
+<div>
+
+</div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2" data-layout-align="center">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-fBase1_fastbw2_NoAUTH_batch1-calibration-1" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fBase1_fastbw2_NoAUTH_batch1-calibration-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="modeling_MS_files/figure-html/fig-fBase1_fastbw2_NoAUTH_batch1-calibration-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fBase1_fastbw2_NoAUTH_batch1-calibration-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Actual versus predicted probabilities for the reduced model having only Age and Albumin_CSF as predictors. The x-axis indicates the risk event probability. The model appears well calibrated with the exception for predictions below the 83% mark. For predicting CIS or MS from the Control stage, there is some overestimation at the <strong><em>0.80-0.95</em></strong> range, while there is heavy underestimation for predictions less than <strong>80%</strong>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-fBase1_fastbw2_NoAUTH_batch1-calibration-2" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fBase1_fastbw2_NoAUTH_batch1-calibration-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="modeling_MS_files/figure-html/fig-fBase1_fastbw2_NoAUTH_batch1-calibration-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fBase1_fastbw2_NoAUTH_batch1-calibration-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Actual versus predicted probabilities for the reduced model having only Age and Albumin_CSF as predictors. The x-axis indicates the risk event probability. The model appears well calibrated with the exception for predictions below the 5% mark. For predicting MS (when at Control or CIS stage), there is some overestimation at the <strong><em>0.5-0.7</em></strong> range, and some underestimation for predicted probabilities lower than <strong><em>50%</em></strong>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="partial-dependence-plots" class="level2">
+<h2 class="anchored" data-anchor-id="partial-dependence-plots">Partial Dependence Plots</h2>
+<div>
+
+</div>
+<div class="cell quarto-layout-panel" data-layout-align="center" data-layout-ncol="2" data-layout-nrow="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="modeling_MS_files/figure-html/base_pdp-1.png" class="img-fluid figure-img" width="576"></p>
+<figcaption><strong>Risk of condition severity</strong>: When in Control status, the probability of having either CIS or MS status. Dependence on <code>Age</code> while being adjusted at <code>Albumin_CSF = 20</code>. The shadows denote 90% and 10% quantiles of the confidence interval i.e.&nbsp;the central 80%. A light blue dashed line at the 50% likelihood marks the transition to higher risk territory. <strong>Overestimation</strong> of the risk can be observed at younger ages due to the low sample size of the <code>Control</code> group.</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="modeling_MS_files/figure-html/base_pdp-2.png" class="img-fluid figure-img" width="576"></p>
+<figcaption><strong>Risk of having MS</strong> when either in Control or CIS state. Dependence on <code>Age</code> while being adjusted at <code>Albumin_CSF = 20</code>. The shadows denote 90% and 10% quantiles of the confidence interval i.e.&nbsp;the central 80%. A light blue dashed line at the 50% likelihood marks the transition to higher risk territory.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="modeling_MS_files/figure-html/base_pdp-3.png" class="img-fluid figure-img" width="576"></p>
+<figcaption><strong>Risk of condition severity</strong>: When in Control status, the probability of having either CIS or MS status. Dependence on <code>Albumin_CSF</code> while being adjusted at <code>Age = 32</code>. The shadows denote 90% and 10% quantiles of the confidence interval i.e.&nbsp;the central 80%. A light blue dashed line at the 50% likelihood marks the transition to higher risk territory.</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="modeling_MS_files/figure-html/base_pdp-4.png" class="img-fluid figure-img" width="576"></p>
+<figcaption><strong>Risk of having MS</strong> when either in Control or CIS state. Dependence on <code>Albumin_CSF</code> while being adjusted at <code>Age = 32</code>. The shadows denote 90% and 10% quantiles of the confidence interval i.e.&nbsp;the central 80%. A light blue dashed line at the 50% likelihood marks the transition to higher risk territory.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="added-value-from-lipids" class="level1 page-columns page-full" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Added Value From Lipids</h1>
+<p>Below two procedures are shown for assessing lipid added value to the predictive performance of a model after adjusting for the clinical information of the <code>Age</code> &amp; <code>Albumin_CSF</code> variables.</p>
+<p>The two main methods used to identify the biomarker candidate(s) are based on the likelihood ratio and on network graph estimation.</p>
+<p>Each procedure aims to expand on the selected cases i.e.&nbsp;lipid(s) from the previous one.</p>
+<section id="sec-LR1" class="level2">
+<h2 class="anchored" data-anchor-id="sec-LR1">Model Likelihood Ratio Statistic (LR)</h2>
+<p>Initially, using the original data as above, each lipid is added separately in a model that includes <code>Age</code> &amp; <code>Albumin_CSF</code> as predictors, and the model’s <code>LR</code> statistic is extracted. Then the lipids are ranked so that top ranks correspond to the highest <code>LR</code> values. Below is a histogram showing the distribution of the LR statistics.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code>------------------------------------------------------------------------------ 
+6 d.f. Chi-squares
+
+    length         n       NAs    unique        0s      mean    meanCI'
+     1'313     1'313         0       = n         0  19.11619  18.96292
+              100.0%      0.0%                0.0%            19.26946
+                                                                      
+       .05       .10       .25    median       .75       .90       .95
+  16.72759  16.85558  17.27098  18.21955  19.94592  22.46632  24.55423
+                                                                      
+     range        sd     vcoef       mad       IQR      skew      kurt
+  28.87480   2.83101   0.14810   1.68895   2.67494   2.81219  13.68888
+                                                                      
+lowest : 16.52865, 16.53301, 16.53313, 16.53876, 16.53921
+highest: 32.08181, 33.18942, 39.96127, 42.48836, 45.40346
+
+' 95%-CI (classic)</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="fig-LR_added_value" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-LR_added_value-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="modeling_MS_files/figure-html/fig-LR_added_value-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-LR_added_value-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Distribution of Chi-Square LR statistics from 6 degrees of freedom models, having Age, Albumin_CSF and each lipid separately as predictor variables and assuming a nonlinear association with the <code>MS</code> disease severity outcome. Three lipids can be seen to have a higher than <strong><em>40</em></strong> LR value. The blue curve denotes the cumulative distribution function <code>cdf</code> of the Chi-Square LR statistics.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The top <code>3</code> lipids are indicated below with the ranking based on having a <code>cdf</code> value of at least <code>99%</code> and an <code>FDR adjusted p-value</code> of less than <code>5%</code>:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 21%">
+<col style="width: 9%">
+<col style="width: 3%">
+<col style="width: 14%">
+<col style="width: 10%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 8%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">codeName</th>
+<th style="text-align: center;">lipName</th>
+<th style="text-align: center;">chisq</th>
+<th style="text-align: center;">df</th>
+<th style="text-align: center;">pooledFDRpval</th>
+<th style="text-align: center;">cdf</th>
+<th style="text-align: center;">rank</th>
+<th style="text-align: center;">RT</th>
+<th style="text-align: center;">M_Z</th>
+<th style="text-align: center;">lipActual</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">lip1172</td>
+<td style="text-align: center;">682.59229 Da 673.09 s</td>
+<td style="text-align: center;">45.40346</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">0.0007</td>
+<td style="text-align: center;">1.0000000</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip156</td>
+<td style="text-align: center;">727.65058 Da 672.95 s</td>
+<td style="text-align: center;">42.48836</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">0.0030</td>
+<td style="text-align: center;">0.9992384</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip1012</td>
+<td style="text-align: center;">812.67373 Da 513.47 s</td>
+<td style="text-align: center;">39.96127</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">0.0107</td>
+<td style="text-align: center;">0.9984768</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">8.56</td>
+<td style="text-align: center;">813.681</td>
+<td style="text-align: center;">SM_42:2_</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><br>
+</p>
+<p>These lipids have been found to be significant after clinical metadata adjustment i.e.&nbsp;<code>Age</code> and <code>Albumin_CSF</code> and with an <code>FDR</code> p-value adjustment. Currently, only the lipid with code name <code>lip1012</code> has been identified as <code>SM_42:2_</code>. Below, three models have been built upon the base one and utilizing the above lipids in different ways:</p>
+<ol type="1">
+<li>A penalized ordinal regression model that includes nonlinear and interaction terms amongst all variables <code>Age</code>, <code>Albumin_CSF</code>, <code>lip1172</code>, <code>lip156</code> and <code>lip1012</code>, with 8.8 degrees of freedom and with a backward elimination procedure applied to it. The final resulting model included only the variables <code>Age</code>, <code>Albumin_CSF</code>, <code>lip1172</code> and <code>lip1012</code>.</li>
+<li>A penalized ordinal regression model that includes all variables <code>Age</code>, <code>Albumin_CSF</code>, <code>lip1172</code>, <code>lip156</code> and <code>lip1012</code> in a nonlinear form and with 7.5 degrees of freedom.</li>
+<li>An ordinal regression model that includes <code>Age</code>, <code>Albumin_CSF</code>, and <code>lip1012</code> all in a nonlinear form and with 6 degrees of freedom.</li>
+</ol>
+<p>Below a table of performance metrics as well as calibration plots are shown for all of these models.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 7%">
+<col style="width: 13%">
+<col style="width: 30%">
+<col style="width: 18%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">model_id</th>
+<th style="text-align: center;">df</th>
+<th style="text-align: center;">C_index</th>
+<th style="text-align: center;">variation_type</th>
+<th style="text-align: center;">model_type</th>
+<th style="text-align: center;">variables</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">8.8</td>
+<td style="text-align: center;">0.78</td>
+<td style="text-align: center;">sampling &amp; 46 terms</td>
+<td style="text-align: center;">penalized</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">7.5</td>
+<td style="text-align: center;">0.81</td>
+<td style="text-align: center;">sampling</td>
+<td style="text-align: center;">penalized</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">6.0</td>
+<td style="text-align: center;">0.76</td>
+<td style="text-align: center;">sampling &amp; 6 terms</td>
+<td style="text-align: center;">unpenalized</td>
+<td style="text-align: center;">3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="calibration-1" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="calibration-1">Calibration</h2>
+<div>
+
+</div>
+<div class="cell quarto-layout-panel" data-layout-align="center" data-layout-ncol="2" data-layout-nrow="3">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-models123-calibration-1" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-models123-calibration-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="modeling_MS_files/figure-html/fig-models123-calibration-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-models123-calibration-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: <code>Model 1</code>: Actual versus predicted probabilities for the reduced model having <code>Age</code>, <code>Albumin_CSF</code>, <code>lip1172</code> and <code>SM_42:2_</code> aka <code>lip1012</code> as predictors in nonlinear form. The x-axis indicates the risk event probability. The model appears well calibrated. For predicting CIS or MS from the Control stage, there is underestimation at the <strong><em>0.5-0.8</em></strong> range.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-models123-calibration-2" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-models123-calibration-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="modeling_MS_files/figure-html/fig-models123-calibration-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-models123-calibration-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: <code>Model 1</code>: Actual versus predicted probabilities for the reduced model having <code>Age</code>, <code>Albumin_CSF</code>, <code>lip1172</code> and <code>SM_42:2_</code> aka <code>lip1012</code> as predictors in nonlinear form. The x-axis indicates the risk event probability. The model appears well calibrated. For predicting MS (when at Control or CIS stage), there is some overestimation for predictions less than <strong><em>0.6</em></strong>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-models123-calibration-3" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-models123-calibration-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="modeling_MS_files/figure-html/fig-models123-calibration-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-models123-calibration-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: <code>Model 2</code>: Actual versus predicted probabilities for the reduced model having <code>Age</code>, <code>Albumin_CSF</code>, <code>lip1172</code>, <code>lip156</code> and <code>SM_42:2_</code> aka <code>lip1012</code> as predictors in nonlinear form. The x-axis indicates the risk event probability. The model appears well calibrated. For predicting CIS or MS from the Control stage, there is underestimation at the <strong><em>0.45-0.8</em></strong> range.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-models123-calibration-4" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-models123-calibration-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="modeling_MS_files/figure-html/fig-models123-calibration-4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-models123-calibration-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: <code>Model 2</code>: Actual versus predicted probabilities for the reduced model having <code>Age</code>, <code>Albumin_CSF</code>, <code>lip1172</code>, <code>lip156</code> and <code>SM_42:2_</code> aka <code>lip1012</code> as predictors in nonlinear form. The x-axis indicates the risk event probability. The model appears well calibrated. For predicting MS (when at Control or CIS stage), there is some overestimation for predictions less than <strong><em>0.6</em></strong>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-models123-calibration-5" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-models123-calibration-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="modeling_MS_files/figure-html/fig-models123-calibration-5.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-models123-calibration-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: <code>Model 3</code>: Actual versus predicted probabilities for the reduced model having <code>Age</code>, <code>Albumin_CSF</code> and <code>SM_42:2_</code> aka <code>lip1012</code> as predictors in nonlinear form. The x-axis indicates the risk event probability. The model appears well calibrated. For predicting CIS or MS from the Control stage, there is underestimation for predictions lower than <strong><em>0.75</em></strong>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-models123-calibration-6" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-models123-calibration-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="modeling_MS_files/figure-html/fig-models123-calibration-6.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-models123-calibration-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: <code>Model 3</code>: Actual versus predicted probabilities for the reduced model having <code>Age</code>, <code>Albumin_CSF</code> and <code>SM_42:2_</code> aka <code>lip1012</code> as predictors in nonlinear form. The x-axis indicates the risk event probability. The model appears well calibrated. For predicting MS (when at Control or CIS stage), there is good performance.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>To note, model 1 is also taking into account that lipids <code>lip1172</code> and <code>lip156</code> have a Pearson correlation of <code>~93%</code>, and from two lipids it has selected <code>lip1172</code>. However, since backward elimination does not perform well in the presence of collinearity, model 1 feature selection should be considered with a grain of salt.</p>
+<p><strong><em>Model 3</em></strong> has the best calibration and mean absolute error <code>mae</code> performance even though its <code>C-index</code> is not the highest among the three models. It only spends though 6 degrees of freedom <code>df</code> and achieves a <code>C-index</code> not far from the other two models, having therefore a good balance between parsimony and predictive power. Being the less complex model is also desirable since more room is left for potential new lipids to be added to the model from the results of a correlation network analysis.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>A couple of interesting observations for this study are: 1) Identification of significant lipids after adjustment for clinical information can detect lipids that are in addition correlated to each other, and 2) In the pool of significant lipids that have been obtained, the most significant lipid as per its <code>chisq</code> statistic or <code>FDR adjusted p-value</code> i.e.&nbsp;here <code>lip1172</code>, does not necessarily give the best model when compared to models involving the less significant lipids i.e.&nbsp;here <code>SM_42:2_</code> aka <code>lip1012</code>.</p>
+</div></div></section>
+<section id="partial-dependence-plots-1" class="level2">
+<h2 class="anchored" data-anchor-id="partial-dependence-plots-1">Partial Dependence Plots</h2>
+<section id="sm_422_" class="level3">
+<h3 class="anchored" data-anchor-id="sm_422_">SM_42:2_</h3>
+<div>
+
+</div>
+<div class="cell quarto-layout-panel" data-layout-align="center" data-layout-ncol="2" data-layout-nrow="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="modeling_MS_files/figure-html/SM_42-2_pdp-1.png" class="img-fluid figure-img" width="576"></p>
+<figcaption><code>Model 2:</code> <strong>Risk of condition severity</strong>: When in Control status, the probability of having either CIS or MS status. Dependence on <code>SM_42:2_</code> (aka <code>lip1012</code>) while being adjusted at values of the other <code>4</code> variables as per <code>Adjusted to:</code> caption. The shadows denote 90% and 10% quantiles of the confidence interval i.e.&nbsp;the central 80%. A light blue dashed line at the 50% likelihood marks the transition to higher risk territory.</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="modeling_MS_files/figure-html/SM_42-2_pdp-2.png" class="img-fluid figure-img" width="576"></p>
+<figcaption><code>Model 2:</code> <strong>Risk of having MS</strong> when either in Control or CIS state. Dependence on <code>SM_42:2_</code> (aka <code>lip1012</code>) while being adjusted at values of the other <code>4</code> variables as per <code>Adjusted to:</code> caption. The shadows denote 90% and 10% quantiles of the confidence interval i.e.&nbsp;the central 80%. A light blue dashed line at the 50% likelihood marks the transition to higher risk territory.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="modeling_MS_files/figure-html/SM_42-2_pdp-3.png" class="img-fluid figure-img" width="576"></p>
+<figcaption><code>Model 3:</code> <strong>Risk of condition severity</strong>: When in Control status, the probability of having either CIS or MS status. Dependence on <code>SM_42:2_</code> (aka <code>lip1012</code>) while being adjusted at values of the other <code>2</code> variables as per <code>Adjusted to:</code> caption. The shadows denote 90% and 10% quantiles of the confidence interval i.e.&nbsp;the central 80%. A light blue dashed line at the 50% likelihood marks the transition to higher risk territory.</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="modeling_MS_files/figure-html/SM_42-2_pdp-4.png" class="img-fluid figure-img" width="576"></p>
+<figcaption><code>Model 3:</code> <strong>Risk of having MS</strong> when either in Control or CIS state. Dependence on <code>SM_42:2_</code> (aka <code>lip1012</code>) while being adjusted at values of the other <code>2</code> variables as per <code>Adjusted to:</code> caption. The shadows denote 90% and 10% quantiles of the confidence interval i.e.&nbsp;the central 80%. A light blue dashed line at the 50% likelihood marks the transition to higher risk territory.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="lip1172" class="level3">
+<h3 class="anchored" data-anchor-id="lip1172">lip1172</h3>
+<div>
+
+</div>
+<div class="cell quarto-layout-panel" data-layout-align="center" data-layout-ncol="2" data-layout-nrow="1">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="modeling_MS_files/figure-html/lip1172_pdp-1.png" class="img-fluid figure-img" width="576"></p>
+<figcaption><code>Model 2:</code> <strong>Risk of condition severity</strong>: When in Control status, the probability of having either CIS or MS status. Dependence on <code>lip1172</code> while being adjusted at values of the other <code>4</code> variables as per <code>Adjusted to:</code> caption. The shadows denote 90% and 10% quantiles of the confidence interval i.e.&nbsp;the central 80%. A light blue dashed line at the 50% likelihood marks the transition to higher risk territory.</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="modeling_MS_files/figure-html/lip1172_pdp-2.png" class="img-fluid figure-img" width="576"></p>
+<figcaption><code>Model 2:</code> <strong>Risk of having MS</strong> when either in Control or CIS state. Dependence on <code>lip1172</code> while being adjusted at values of the other <code>4</code> variables as per <code>Adjusted to:</code> caption. The shadows denote 90% and 10% quantiles of the confidence interval i.e.&nbsp;the central 80%. A light blue dashed line at the 50% likelihood marks the transition to higher risk territory.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="relative-explained-variation" class="level2">
+<h2 class="anchored" data-anchor-id="relative-explained-variation">Relative Explained Variation</h2>
+<div id="fig-added_value_rev" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-added_value_rev-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-added_value_rev" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-added_value_rev-1" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-added_value_rev-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="modeling_MS_files/figure-html/fig-added_value_rev-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" data-ref-parent="fig-added_value_rev" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-added_value_rev-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Model 2
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-added_value_rev" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-added_value_rev-2" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-added_value_rev-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="modeling_MS_files/figure-html/fig-added_value_rev-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" data-ref-parent="fig-added_value_rev" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-added_value_rev-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Model 3
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-added_value_rev-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: It can be seen that there is overlap in the confidence regions of each predictor. Due to the small sample size of <strong><em>143</em></strong> observations, the intervals are quite wide. <code>SM_42:2_</code> aka <code>lip1012</code> is seen to be the highest contributor in the model.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="variable-effects" class="level2">
+<h2 class="anchored" data-anchor-id="variable-effects">Variable Effects</h2>
+<section id="model-2" class="level3">
+<h3 class="anchored" data-anchor-id="model-2">Model 2</h3>
+<table class="gmisc_table" style="border-collapse: collapse; margin-top: 1em; margin-bottom: 1em;">
+<thead>
+<tr>
+<td colspan="8" style="text-align: left;">
+Effects   Response: <code>Group</code>
+</td>
+</tr>
+<tr>
+<th style="border-bottom: 1px solid grey; font-weight: 900; border-top: 2px solid grey; text-align: center;">
+</th>
+<th style="font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: right;">
+Low
+</th>
+<th style="font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: right;">
+High
+</th>
+<th style="font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: right;">
+Δ
+</th>
+<th style="font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: right;">
+Effect
+</th>
+<th style="font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: right;">
+S.E.
+</th>
+<th style="font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: right;">
+Lower 0.95
+</th>
+<th style="font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: right;">
+Upper 0.95
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">
+Age
+</td>
+<td style="padding-left:4ex; text-align: right;">
+27.00
+</td>
+<td style="padding-left:4ex; text-align: right;">
+42.00
+</td>
+<td style="padding-left:4ex; text-align: right;">
+15.000
+</td>
+<td style="padding-left:4ex; text-align: right;">
+-0.2325
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.2814
+</td>
+<td style="padding-left:4ex; text-align: right;">
+-0.83310
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.303100
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+ <em>Odds Ratio</em>
+</td>
+<td style="padding-left:4ex; text-align: right;">
+27.00
+</td>
+<td style="padding-left:4ex; text-align: right;">
+42.00
+</td>
+<td style="padding-left:4ex; text-align: right;">
+15.000
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.7926
+</td>
+<td style="padding-left:4ex; text-align: right;">
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.43470
+</td>
+<td style="padding-left:4ex; text-align: right;">
+1.354000
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+Albumin_CSF
+</td>
+<td style="padding-left:4ex; text-align: right;">
+25.15
+</td>
+<td style="padding-left:4ex; text-align: right;">
+41.20
+</td>
+<td style="padding-left:4ex; text-align: right;">
+16.060
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.4571
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.2745
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.01182
+</td>
+<td style="padding-left:4ex; text-align: right;">
+1.027000
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+ <em>Odds Ratio</em>
+</td>
+<td style="padding-left:4ex; text-align: right;">
+25.15
+</td>
+<td style="padding-left:4ex; text-align: right;">
+41.20
+</td>
+<td style="padding-left:4ex; text-align: right;">
+16.060
+</td>
+<td style="padding-left:4ex; text-align: right;">
+1.5790
+</td>
+<td style="padding-left:4ex; text-align: right;">
+</td>
+<td style="padding-left:4ex; text-align: right;">
+1.01200
+</td>
+<td style="padding-left:4ex; text-align: right;">
+2.793000
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+lip1172
+</td>
+<td style="padding-left:4ex; text-align: right;">
+9.44
+</td>
+<td style="padding-left:4ex; text-align: right;">
+10.21
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.770
+</td>
+<td style="padding-left:4ex; text-align: right;">
+-0.3570
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.1989
+</td>
+<td style="padding-left:4ex; text-align: right;">
+-0.62960
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.239400
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+ <em>Odds Ratio</em>
+</td>
+<td style="padding-left:4ex; text-align: right;">
+9.44
+</td>
+<td style="padding-left:4ex; text-align: right;">
+10.21
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.770
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.6997
+</td>
+<td style="padding-left:4ex; text-align: right;">
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.53280
+</td>
+<td style="padding-left:4ex; text-align: right;">
+1.270000
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+lip156
+</td>
+<td style="padding-left:4ex; text-align: right;">
+8.89
+</td>
+<td style="padding-left:4ex; text-align: right;">
+9.61
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.720
+</td>
+<td style="padding-left:4ex; text-align: right;">
+-0.2034
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.1149
+</td>
+<td style="padding-left:4ex; text-align: right;">
+-0.45360
+</td>
+<td style="padding-left:4ex; text-align: right;">
+-0.003204
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+ <em>Odds Ratio</em>
+</td>
+<td style="padding-left:4ex; text-align: right;">
+8.89
+</td>
+<td style="padding-left:4ex; text-align: right;">
+9.61
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.720
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.8160
+</td>
+<td style="padding-left:4ex; text-align: right;">
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.63530
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.996800
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+lip1012
+</td>
+<td style="padding-left:4ex; text-align: right;">
+8.48
+</td>
+<td style="padding-left:4ex; text-align: right;">
+10.78
+</td>
+<td style="padding-left:4ex; text-align: right;">
+2.305
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.4120
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.2886
+</td>
+<td style="padding-left:4ex; text-align: right;">
+-0.17040
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.960600
+</td>
+</tr>
+<tr>
+<td style="border-bottom: 2px solid grey; text-align: left;">
+ <em>Odds Ratio</em>
+</td>
+<td style="padding-left:4ex; border-bottom: 2px solid grey; text-align: right;">
+8.48
+</td>
+<td style="padding-left:4ex; border-bottom: 2px solid grey; text-align: right;">
+10.78
+</td>
+<td style="padding-left:4ex; border-bottom: 2px solid grey; text-align: right;">
+2.305
+</td>
+<td style="padding-left:4ex; border-bottom: 2px solid grey; text-align: right;">
+1.5100
+</td>
+<td style="padding-left:4ex; border-bottom: 2px solid grey; text-align: right;">
+</td>
+<td style="padding-left:4ex; border-bottom: 2px solid grey; text-align: right;">
+0.84340
+</td>
+<td style="padding-left:4ex; border-bottom: 2px solid grey; text-align: right;">
+2.613000
+</td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-layout-align="left">
+<div class="cell-output-display">
+<div id="fig-var-effects-model2" class="quarto-figure quarto-figure-left quarto-float anchored" width="960" data-fig-align="left">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-var-effects-model2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="modeling_MS_files/figure-html/fig-var-effects-model2-1.png" id="fig-var-effects-model2" class="img-fluid quarto-figure quarto-figure-left anchored figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-var-effects-model2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="model-3" class="level3">
+<h3 class="anchored" data-anchor-id="model-3">Model 3</h3>
+<table class="gmisc_table" style="border-collapse: collapse; margin-top: 1em; margin-bottom: 1em;">
+<thead>
+<tr>
+<td colspan="8" style="text-align: left;">
+Effects   Response: <code>Group</code>
+</td>
+</tr>
+<tr>
+<th style="border-bottom: 1px solid grey; font-weight: 900; border-top: 2px solid grey; text-align: center;">
+</th>
+<th style="font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: right;">
+Low
+</th>
+<th style="font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: right;">
+High
+</th>
+<th style="font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: right;">
+Δ
+</th>
+<th style="font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: right;">
+Effect
+</th>
+<th style="font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: right;">
+S.E.
+</th>
+<th style="font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: right;">
+Lower 0.95
+</th>
+<th style="font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: right;">
+Upper 0.95
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">
+Age
+</td>
+<td style="padding-left:4ex; text-align: right;">
+27.00
+</td>
+<td style="padding-left:4ex; text-align: right;">
+42.00
+</td>
+<td style="padding-left:4ex; text-align: right;">
+15.000
+</td>
+<td style="padding-left:4ex; text-align: right;">
+-0.2545
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.3685
+</td>
+<td style="padding-left:4ex; text-align: right;">
+-1.0790
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.4265
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+ <em>Odds Ratio</em>
+</td>
+<td style="padding-left:4ex; text-align: right;">
+27.00
+</td>
+<td style="padding-left:4ex; text-align: right;">
+42.00
+</td>
+<td style="padding-left:4ex; text-align: right;">
+15.000
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.7753
+</td>
+<td style="padding-left:4ex; text-align: right;">
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.3399
+</td>
+<td style="padding-left:4ex; text-align: right;">
+1.5320
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+Albumin_CSF
+</td>
+<td style="padding-left:4ex; text-align: right;">
+25.15
+</td>
+<td style="padding-left:4ex; text-align: right;">
+41.20
+</td>
+<td style="padding-left:4ex; text-align: right;">
+16.060
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.7113
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.3522
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.2065
+</td>
+<td style="padding-left:4ex; text-align: right;">
+1.5050
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+ <em>Odds Ratio</em>
+</td>
+<td style="padding-left:4ex; text-align: right;">
+25.15
+</td>
+<td style="padding-left:4ex; text-align: right;">
+41.20
+</td>
+<td style="padding-left:4ex; text-align: right;">
+16.060
+</td>
+<td style="padding-left:4ex; text-align: right;">
+2.0370
+</td>
+<td style="padding-left:4ex; text-align: right;">
+</td>
+<td style="padding-left:4ex; text-align: right;">
+1.2290
+</td>
+<td style="padding-left:4ex; text-align: right;">
+4.5060
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+lip1012
+</td>
+<td style="padding-left:4ex; text-align: right;">
+8.48
+</td>
+<td style="padding-left:4ex; text-align: right;">
+10.78
+</td>
+<td style="padding-left:4ex; text-align: right;">
+2.305
+</td>
+<td style="padding-left:4ex; text-align: right;">
+1.0350
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.4442
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.2205
+</td>
+<td style="padding-left:4ex; text-align: right;">
+1.9880
+</td>
+</tr>
+<tr>
+<td style="border-bottom: 2px solid grey; text-align: left;">
+ <em>Odds Ratio</em>
+</td>
+<td style="padding-left:4ex; border-bottom: 2px solid grey; text-align: right;">
+8.48
+</td>
+<td style="padding-left:4ex; border-bottom: 2px solid grey; text-align: right;">
+10.78
+</td>
+<td style="padding-left:4ex; border-bottom: 2px solid grey; text-align: right;">
+2.305
+</td>
+<td style="padding-left:4ex; border-bottom: 2px solid grey; text-align: right;">
+2.8150
+</td>
+<td style="padding-left:4ex; border-bottom: 2px solid grey; text-align: right;">
+</td>
+<td style="padding-left:4ex; border-bottom: 2px solid grey; text-align: right;">
+1.2470
+</td>
+<td style="padding-left:4ex; border-bottom: 2px solid grey; text-align: right;">
+7.2980
+</td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-layout-align="left">
+<div class="cell-output-display">
+<div id="fig-var-effects-model3" class="quarto-figure quarto-figure-left quarto-float anchored" width="960" data-fig-align="left">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-var-effects-model3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="modeling_MS_files/figure-html/fig-var-effects-model3-1.png" id="fig-var-effects-model3" class="img-fluid quarto-figure quarto-figure-left anchored figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-var-effects-model3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="binary-endpoint" class="level1 page-columns page-full" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Binary Endpoint</h1>
+<p>Due to the low sample size of 15 for the <code>Control</code> group, here a similar analysis as above is implemented but considering only the groups <code>CIS</code> and <code>MS</code>.</p>
+<p>The same <code>2</code> lipids as previously found are indicated below with the ranking based on having a <code>cdf</code> value of at least <code>99%</code> and an <code>FDR adjusted p-value</code> of less than <code>5%</code>:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 29%">
+<col style="width: 12%">
+<col style="width: 5%">
+<col style="width: 19%">
+<col style="width: 12%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">codeName</th>
+<th style="text-align: center;">lipName</th>
+<th style="text-align: center;">chisq</th>
+<th style="text-align: center;">df</th>
+<th style="text-align: center;">pooledFDRpval</th>
+<th style="text-align: center;">cdf</th>
+<th style="text-align: center;">rank</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">lip1172</td>
+<td style="text-align: center;">682.59229 Da 673.09 s</td>
+<td style="text-align: center;">65.61935</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">0.0e+00</td>
+<td style="text-align: center;">1.000000</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip156</td>
+<td style="text-align: center;">727.65058 Da 672.95 s</td>
+<td style="text-align: center;">59.04834</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">1.3e-06</td>
+<td style="text-align: center;">0.999239</td>
+<td style="text-align: center;">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><br>
+</p>
+<p>These lipids have been found to be significant after clinical metadata adjustment i.e.&nbsp;<code>Age</code> and <code>Albumin_CSF</code> and with an <code>FDR</code> p-value adjustment.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Lipid <code>SM_42:2_</code> (aka <code>lip1012</code>) is not detected in this binary group split which indicates the risk of information loss by dichotomizing the outcome group.</p>
+</div></div><p>The model including <code>Age</code>, <code>Albumin_CSF</code> and these two lipids has a <code>C-Index</code> of <code>0.83</code> and uses <code>5.5</code> degrees of freedom. Its calibration plot is shown below.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-model_CIS_MS-calibration" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-model_CIS_MS-calibration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="modeling_MS_files/figure-html/fig-model_CIS_MS-calibration-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-model_CIS_MS-calibration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13: <code>Model CIS vs MS</code>: Actual versus predicted probabilities for the reduced model having <code>Age</code>, <code>Albumin_CSF</code>, <code>lip1172</code> and <code>lip156</code> as predictors in nonlinear form. The x-axis indicates the risk event probability. The model appears well calibrated. For predicting CIS or MS from the Control stage, there is underestimation at the <strong><em>0.5-0.8</em></strong> range.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="network-graph-estimates" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Network Graph Estimates</h1>
+<p>Each network index lipid of each disease severity group is added separately in a model that includes <code>Age</code> &amp; <code>Albumin_CSF</code> as predictors. Then the model’s <code>LR</code> statistic is extracted and the lipids are ranked so that top ranks correspond to the highest <code>LR</code> values. Below is a histogram showing the distribution of the LR statistics.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code>------------------------------------------------------------------------------ 
+4 to 5 d.f. Chi-squares from lipid indices
+
+    length         n       NAs    unique        0s      mean    meanCI'
+     1'313     1'313         0       = n         0  17.45100  17.25454
+              100.0%      0.0%                0.0%            17.64746
+                                                                      
+       .05       .10       .25    median       .75       .90       .95
+  13.64371  13.93282  14.76903  16.38910  19.23540  22.59943  24.82458
+                                                                      
+     range        sd     vcoef       mad       IQR      skew      kurt
+  28.82723   3.62877   0.20794   2.92246   4.46637   1.54487   3.30925
+                                                                      
+lowest : 13.2265, 13.2291, 13.24771, 13.27234, 13.28601
+highest: 31.85471, 31.98247, 34.95702, 35.14566, 42.05373
+
+' 95%-CI (classic)</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="fig-LR_added_value_net" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-LR_added_value_net-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="modeling_MS_files/figure-html/fig-LR_added_value_net-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-LR_added_value_net-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14: Distribution of Chi-Square LR statistics from 4 or 5 degrees of freedom models, having Age, Albumin_CSF and each network index lipid separately as predictor variables, assuming a linear association with the <code>MS</code> disease severity outcome. Three lipids can be seen to have a higher than <strong><em>35</em></strong> LR value. The blue curve denotes the cumulative distribution function <code>cdf</code> of the Chi-Square LR statistics.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The top <code>3</code> lipids are indicated below with the ranking based on having a <code>cdf</code> value of at least <code>99%</code> and an <code>FDR adjusted p-value</code> of less than <code>10%</code>:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 5%">
+<col style="width: 13%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 25%">
+<col style="width: 2%">
+<col style="width: 8%">
+<col style="width: 6%">
+<col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 5%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">codeName</th>
+<th style="text-align: center;">lipName</th>
+<th style="text-align: center;">chisq</th>
+<th style="text-align: center;">lrmFail</th>
+<th style="text-align: center;">coefNames</th>
+<th style="text-align: center;">dfs</th>
+<th style="text-align: center;">pooledFDRpval</th>
+<th style="text-align: center;">cdf</th>
+<th style="text-align: center;">rank</th>
+<th style="text-align: center;">RT</th>
+<th style="text-align: center;">M_Z</th>
+<th style="text-align: center;">lipActual</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">lip1260</td>
+<td style="text-align: center;">419.34802 Da 730.72 s</td>
+<td style="text-align: center;">42.05373</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0.0031</td>
+<td style="text-align: center;">1.0000000</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip1058</td>
+<td style="text-align: center;">620.53740 Da 532.41 s</td>
+<td style="text-align: center;">35.14566</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0.0874</td>
+<td style="text-align: center;">0.9992384</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">8.87</td>
+<td style="text-align: center;">638.5714</td>
+<td style="text-align: center;">DG_18:1_18:1_</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip1171</td>
+<td style="text-align: center;">826.70411 Da 664.95 s</td>
+<td style="text-align: center;">34.95702</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0.0956</td>
+<td style="text-align: center;">0.9984768</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">11.08</td>
+<td style="text-align: center;">844.7379</td>
+<td style="text-align: center;">TG_18:2_18:2_14:0_</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><br>
+</p>
+<section id="model-4" class="level2">
+<h2 class="anchored" data-anchor-id="model-4">Model 4</h2>
+<p>These three network correlation based lipids are added in nonlinear form into the previously built model 2 to form model 4. Model 4’s <code>C_index</code> is a considerable improvement as shown below in the updated performance metric table.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 7%">
+<col style="width: 13%">
+<col style="width: 30%">
+<col style="width: 18%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">model_id</th>
+<th style="text-align: center;">df</th>
+<th style="text-align: center;">C_index</th>
+<th style="text-align: center;">variation_type</th>
+<th style="text-align: center;">model_type</th>
+<th style="text-align: center;">variables</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">8.8</td>
+<td style="text-align: center;">0.78</td>
+<td style="text-align: center;">sampling &amp; 46 terms</td>
+<td style="text-align: center;">penalized</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">7.5</td>
+<td style="text-align: center;">0.81</td>
+<td style="text-align: center;">sampling</td>
+<td style="text-align: center;">penalized</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">6.0</td>
+<td style="text-align: center;">0.76</td>
+<td style="text-align: center;">sampling &amp; 6 terms</td>
+<td style="text-align: center;">unpenalized</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">8.8</td>
+<td style="text-align: center;">0.84</td>
+<td style="text-align: center;">sampling</td>
+<td style="text-align: center;">penalized</td>
+<td style="text-align: center;">8</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-corrPlot-vars-model4" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-corrPlot-vars-model4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="modeling_MS_files/figure-html/fig-corrPlot-vars-model4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-corrPlot-vars-model4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15: Correlation plot of variables included in <strong><em>Model 4</em></strong>. With the exception of the unkwown identity lipids <code>lip1172</code> and <code>lip156</code>, the rest of the variables are not correlated.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<section id="relative-explained-variation-1" class="level3">
+<h3 class="anchored" data-anchor-id="relative-explained-variation-1">Relative Explained Variation</h3>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-added_value_model4" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-added_value_model4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="modeling_MS_files/figure-html/fig-added_value_model4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-added_value_model4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;16: <strong><em>Model 4</em></strong> : It can be seen that there is overlap in the confidence regions of each predictor. Due to the small sample size of <strong><em>143</em></strong> observations, the intervals are quite wide. Lipid <code>TG_18:2_18:2_14:0_</code> aka <code>lip1171</code> is seen to be the highest contributor in the model but accompanied with high uncertainty in its contribution. Second best are lipids <code>SM_42:2_</code> aka <code>lip1012</code> and <code>lip1260</code> with currently unknown identity.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="variable-effects-1" class="level3">
+<h3 class="anchored" data-anchor-id="variable-effects-1">Variable Effects</h3>
+<table class="gmisc_table" style="border-collapse: collapse; margin-top: 1em; margin-bottom: 1em;">
+<thead>
+<tr>
+<td colspan="8" style="text-align: left;">
+Effects   Response: <code>Group</code>
+</td>
+</tr>
+<tr>
+<th style="border-bottom: 1px solid grey; font-weight: 900; border-top: 2px solid grey; text-align: center;">
+</th>
+<th style="font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: right;">
+Low
+</th>
+<th style="font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: right;">
+High
+</th>
+<th style="font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: right;">
+Δ
+</th>
+<th style="font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: right;">
+Effect
+</th>
+<th style="font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: right;">
+S.E.
+</th>
+<th style="font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: right;">
+Lower 0.95
+</th>
+<th style="font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: right;">
+Upper 0.95
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">
+Age
+</td>
+<td style="padding-left:4ex; text-align: right;">
+27.00
+</td>
+<td style="padding-left:4ex; text-align: right;">
+42.000
+</td>
+<td style="padding-left:4ex; text-align: right;">
+15.000
+</td>
+<td style="padding-left:4ex; text-align: right;">
+-0.27050
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.21770
+</td>
+<td style="padding-left:4ex; text-align: right;">
+-0.7026
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.15530
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+ <em>Odds Ratio</em>
+</td>
+<td style="padding-left:4ex; text-align: right;">
+27.00
+</td>
+<td style="padding-left:4ex; text-align: right;">
+42.000
+</td>
+<td style="padding-left:4ex; text-align: right;">
+15.000
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.76300
+</td>
+<td style="padding-left:4ex; text-align: right;">
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.4953
+</td>
+<td style="padding-left:4ex; text-align: right;">
+1.16800
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+Albumin_CSF
+</td>
+<td style="padding-left:4ex; text-align: right;">
+25.15
+</td>
+<td style="padding-left:4ex; text-align: right;">
+41.200
+</td>
+<td style="padding-left:4ex; text-align: right;">
+16.060
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.41760
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.19950
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.0700
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.85060
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+ <em>Odds Ratio</em>
+</td>
+<td style="padding-left:4ex; text-align: right;">
+25.15
+</td>
+<td style="padding-left:4ex; text-align: right;">
+41.200
+</td>
+<td style="padding-left:4ex; text-align: right;">
+16.060
+</td>
+<td style="padding-left:4ex; text-align: right;">
+1.51800
+</td>
+<td style="padding-left:4ex; text-align: right;">
+</td>
+<td style="padding-left:4ex; text-align: right;">
+1.0730
+</td>
+<td style="padding-left:4ex; text-align: right;">
+2.34100
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+lip1172
+</td>
+<td style="padding-left:4ex; text-align: right;">
+9.44
+</td>
+<td style="padding-left:4ex; text-align: right;">
+10.210
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.770
+</td>
+<td style="padding-left:4ex; text-align: right;">
+-0.28920
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.08223
+</td>
+<td style="padding-left:4ex; text-align: right;">
+-0.4570
+</td>
+<td style="padding-left:4ex; text-align: right;">
+-0.12790
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+ <em>Odds Ratio</em>
+</td>
+<td style="padding-left:4ex; text-align: right;">
+9.44
+</td>
+<td style="padding-left:4ex; text-align: right;">
+10.210
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.770
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.74890
+</td>
+<td style="padding-left:4ex; text-align: right;">
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.6332
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.87990
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+lip156
+</td>
+<td style="padding-left:4ex; text-align: right;">
+8.89
+</td>
+<td style="padding-left:4ex; text-align: right;">
+9.610
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.720
+</td>
+<td style="padding-left:4ex; text-align: right;">
+-0.22320
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.06261
+</td>
+<td style="padding-left:4ex; text-align: right;">
+-0.3559
+</td>
+<td style="padding-left:4ex; text-align: right;">
+-0.09919
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+ <em>Odds Ratio</em>
+</td>
+<td style="padding-left:4ex; text-align: right;">
+8.89
+</td>
+<td style="padding-left:4ex; text-align: right;">
+9.610
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.720
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.80000
+</td>
+<td style="padding-left:4ex; text-align: right;">
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.7005
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.90560
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+lip1012
+</td>
+<td style="padding-left:4ex; text-align: right;">
+8.48
+</td>
+<td style="padding-left:4ex; text-align: right;">
+10.780
+</td>
+<td style="padding-left:4ex; text-align: right;">
+2.305
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.09353
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.18000
+</td>
+<td style="padding-left:4ex; text-align: right;">
+-0.2807
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.43920
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+ <em>Odds Ratio</em>
+</td>
+<td style="padding-left:4ex; text-align: right;">
+8.48
+</td>
+<td style="padding-left:4ex; text-align: right;">
+10.780
+</td>
+<td style="padding-left:4ex; text-align: right;">
+2.305
+</td>
+<td style="padding-left:4ex; text-align: right;">
+1.09800
+</td>
+<td style="padding-left:4ex; text-align: right;">
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.7553
+</td>
+<td style="padding-left:4ex; text-align: right;">
+1.55100
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+lip1260
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.00
+</td>
+<td style="padding-left:4ex; text-align: right;">
+9.015
+</td>
+<td style="padding-left:4ex; text-align: right;">
+9.015
+</td>
+<td style="padding-left:4ex; text-align: right;">
+-0.53390
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.31640
+</td>
+<td style="padding-left:4ex; text-align: right;">
+-1.1190
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.03066
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+ <em>Odds Ratio</em>
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.00
+</td>
+<td style="padding-left:4ex; text-align: right;">
+9.015
+</td>
+<td style="padding-left:4ex; text-align: right;">
+9.015
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.58630
+</td>
+<td style="padding-left:4ex; text-align: right;">
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.3267
+</td>
+<td style="padding-left:4ex; text-align: right;">
+1.03100
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+lip1058
+</td>
+<td style="padding-left:4ex; text-align: right;">
+10.18
+</td>
+<td style="padding-left:4ex; text-align: right;">
+10.940
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.770
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.01940
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.13090
+</td>
+<td style="padding-left:4ex; text-align: right;">
+-0.2413
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.26610
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+ <em>Odds Ratio</em>
+</td>
+<td style="padding-left:4ex; text-align: right;">
+10.18
+</td>
+<td style="padding-left:4ex; text-align: right;">
+10.940
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.770
+</td>
+<td style="padding-left:4ex; text-align: right;">
+1.02000
+</td>
+<td style="padding-left:4ex; text-align: right;">
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.7856
+</td>
+<td style="padding-left:4ex; text-align: right;">
+1.30500
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+lip1171
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.00
+</td>
+<td style="padding-left:4ex; text-align: right;">
+8.960
+</td>
+<td style="padding-left:4ex; text-align: right;">
+8.960
+</td>
+<td style="padding-left:4ex; text-align: right;">
+-1.31700
+</td>
+<td style="padding-left:4ex; text-align: right;">
+0.33060
+</td>
+<td style="padding-left:4ex; text-align: right;">
+-1.9430
+</td>
+<td style="padding-left:4ex; text-align: right;">
+-0.62190
+</td>
+</tr>
+<tr>
+<td style="border-bottom: 2px solid grey; text-align: left;">
+ <em>Odds Ratio</em>
+</td>
+<td style="padding-left:4ex; border-bottom: 2px solid grey; text-align: right;">
+0.00
+</td>
+<td style="padding-left:4ex; border-bottom: 2px solid grey; text-align: right;">
+8.960
+</td>
+<td style="padding-left:4ex; border-bottom: 2px solid grey; text-align: right;">
+8.960
+</td>
+<td style="padding-left:4ex; border-bottom: 2px solid grey; text-align: right;">
+0.26790
+</td>
+<td style="padding-left:4ex; border-bottom: 2px solid grey; text-align: right;">
+</td>
+<td style="padding-left:4ex; border-bottom: 2px solid grey; text-align: right;">
+0.1433
+</td>
+<td style="padding-left:4ex; border-bottom: 2px solid grey; text-align: right;">
+0.53690
+</td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-layout-align="left">
+<div class="cell-output-display">
+<div id="fig-var-effects-model4" class="quarto-figure quarto-figure-left quarto-float anchored" data-fig-align="left">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-var-effects-model4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="modeling_MS_files/figure-html/fig-var-effects-model4-1.png" class="img-fluid quarto-figure quarto-figure-left figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-var-effects-model4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17: Risk odds of each variable in <strong><em>Model 4</em></strong>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="partial-dependence-plots-2" class="level3">
+<h3 class="anchored" data-anchor-id="partial-dependence-plots-2">Partial Dependence Plots</h3>
+<div>
+
+</div>
+<div class="cell quarto-layout-panel" data-layout-align="center" data-layout-ncol="2" data-layout-nrow="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="modeling_MS_files/figure-html/pdp_model4-1.png" class="img-fluid figure-img" width="576"></p>
+<figcaption><code>Model 4:</code> <strong>Risk of condition severity</strong>: When in Control status, the probability of having either CIS or MS status. Dependence on <code>lip1260</code> (currently not identified) while being adjusted at values of the other <code>7</code> variables as per <code>Adjusted to:</code> caption. The shadows denote 90% and 10% quantiles of the confidence interval i.e.&nbsp;the central 80%. A light blue dashed line at the 50% likelihood marks the transition to higher risk territory.</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="modeling_MS_files/figure-html/pdp_model4-2.png" class="img-fluid figure-img" width="576"></p>
+<figcaption><code>Model 4:</code> <strong>Risk of having MS</strong> when either in Control or CIS state. Dependence on <code>lip1260</code> (currently not identified) while being adjusted at values of the other <code>7</code> variables as per <code>Adjusted to:</code> caption. The shadows denote 90% and 10% quantiles of the confidence interval i.e.&nbsp;the central 80%. A light blue dashed line at the 50% likelihood marks the transition to higher risk territory.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="modeling_MS_files/figure-html/pdp_model4-3.png" class="img-fluid figure-img" width="576"></p>
+<figcaption><code>Model 4:</code> <strong>Risk of condition severity</strong>: When in Control status, the probability of having either CIS or MS status. Dependence on <code>TG_18:2_18:2_14:0_</code> (aka <code>lip1171</code>) while being adjusted at values of the other <code>7</code> variables as per <code>Adjusted to:</code> caption. The shadows denote 90% and 10% quantiles of the confidence interval i.e.&nbsp;the central 80%. A light blue dashed line at the 50% likelihood marks the transition to higher risk territory.</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="modeling_MS_files/figure-html/pdp_model4-4.png" class="img-fluid figure-img" width="576"></p>
+<figcaption><code>Model 4:</code> <strong>Risk of having MS</strong> when either in Control or CIS state. Dependence on <code>TG_18:2_18:2_14:0_</code> (aka <code>lip1171</code>) while being adjusted at values of the other <code>7</code> variables as per <code>Adjusted to:</code> caption. The shadows denote 90% and 10% quantiles of the confidence interval i.e.&nbsp;the central 80%. A light blue dashed line at the 50% likelihood marks the transition to higher risk territory.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="adding-more-lipids-into-the-model" class="level2">
+<h2 class="anchored" data-anchor-id="adding-more-lipids-into-the-model">Adding More Lipids Into The Model</h2>
+<p>Examining <a href="#fig-LR_added_value_net" class="quarto-xref">Figure&nbsp;14</a>, it can be observed that there is a cluster of lipids with <code>Chi-square</code> statistics above <code>25</code>. When looking at the <code>cdf</code> of the plot, this cluster contains <code>61</code> lipids above the threshold of <code>95.43%</code>. A list of these cases is shown below in descending order of importance as per the <code>Chi-square</code> statistic and the <strong><em>non-significant</em></strong> <code>FDR adjusted p-values</code> (with exception of the top <code>3</code> that were selected in the previous analysis). The table column <code>lipActual</code> indicates the known identity lipids.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 5%">
+<col style="width: 13%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 25%">
+<col style="width: 2%">
+<col style="width: 8%">
+<col style="width: 6%">
+<col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 5%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">codeName</th>
+<th style="text-align: center;">lipName</th>
+<th style="text-align: center;">chisq</th>
+<th style="text-align: center;">lrmFail</th>
+<th style="text-align: center;">coefNames</th>
+<th style="text-align: center;">dfs</th>
+<th style="text-align: center;">pooledFDRpval</th>
+<th style="text-align: center;">cdf</th>
+<th style="text-align: center;">rank</th>
+<th style="text-align: center;">RT</th>
+<th style="text-align: center;">M_Z</th>
+<th style="text-align: center;">lipActual</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">lip1260</td>
+<td style="text-align: center;">419.34802 Da 730.72 s</td>
+<td style="text-align: center;">42.05373</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0.0031</td>
+<td style="text-align: center;">1.0000000</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip1058</td>
+<td style="text-align: center;">620.53740 Da 532.41 s</td>
+<td style="text-align: center;">35.14566</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0.0874</td>
+<td style="text-align: center;">0.9992384</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">8.87</td>
+<td style="text-align: center;">638.5714</td>
+<td style="text-align: center;">DG_18:1_18:1_</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip1171</td>
+<td style="text-align: center;">826.70411 Da 664.95 s</td>
+<td style="text-align: center;">34.95702</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0.0956</td>
+<td style="text-align: center;">0.9984768</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">11.08</td>
+<td style="text-align: center;">844.7379</td>
+<td style="text-align: center;">TG_18:2_18:2_14:0_</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip609</td>
+<td style="text-align: center;">229.24063 Da 50.01 s</td>
+<td style="text-align: center;">31.98247</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0.3957</td>
+<td style="text-align: center;">0.9977152</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip1230</td>
+<td style="text-align: center;">821.74680 Da 717.18 s</td>
+<td style="text-align: center;">31.85471</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0.4205</td>
+<td style="text-align: center;">0.9969535</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">11.95</td>
+<td style="text-align: center;">822.7541</td>
+<td style="text-align: center;">TG_18:1_16:0_14:0_</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip1236</td>
+<td style="text-align: center;">550.49592 Da 721.83 s</td>
+<td style="text-align: center;">31.68851</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0.4551</td>
+<td style="text-align: center;">0.9961919</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip524</td>
+<td style="text-align: center;">208.18303 Da 15.68 s</td>
+<td style="text-align: center;">30.48386</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0.8063</td>
+<td style="text-align: center;">0.9954303</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip627</td>
+<td style="text-align: center;">545.34745 Da 72.47 s</td>
+<td style="text-align: center;">29.96656</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9946687</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">1.21</td>
+<td style="text-align: center;">546.3547</td>
+<td style="text-align: center;">LPC_20:3_</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip17</td>
+<td style="text-align: center;">338.33785 Da 76.73 s</td>
+<td style="text-align: center;">29.89728</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9939071</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip1128</td>
+<td style="text-align: center;">698.58797 Da 598.54 s</td>
+<td style="text-align: center;">29.83298</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9931455</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip1158</td>
+<td style="text-align: center;">798.67286 Da 635.19 s</td>
+<td style="text-align: center;">29.76498</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9923839</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">10.59</td>
+<td style="text-align: center;">816.7066</td>
+<td style="text-align: center;">TG_12:0_18:2_18:2_</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip354</td>
+<td style="text-align: center;">338.33783 Da 7.98 s</td>
+<td style="text-align: center;">29.43015</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9916222</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip1154</td>
+<td style="text-align: center;">746.64199 Da 630.44 s</td>
+<td style="text-align: center;">29.38374</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9908606</td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip125</td>
+<td style="text-align: center;">663.57963 Da 510.36 s</td>
+<td style="text-align: center;">29.22361</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9900990</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip100</td>
+<td style="text-align: center;">747.17730 Da 306.05 s</td>
+<td style="text-align: center;">29.17253</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9893374</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip1184</td>
+<td style="text-align: center;">798.67081 Da 687.55 s</td>
+<td style="text-align: center;">29.11192</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9885758</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip31</td>
+<td style="text-align: center;">551.39469 Da 151.96 s</td>
+<td style="text-align: center;">28.93812</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9878142</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">2.53</td>
+<td style="text-align: center;">552.4020</td>
+<td style="text-align: center;">LPC_20:0_</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip1305</td>
+<td style="text-align: center;">396.37542 Da 756.10 s</td>
+<td style="text-align: center;">28.76134</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9870526</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip1150</td>
+<td style="text-align: center;">739.66629 Da 624.64 s</td>
+<td style="text-align: center;">28.37620</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9862909</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip494</td>
+<td style="text-align: center;">553.45505 Da 11.56 s</td>
+<td style="text-align: center;">28.24207</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9855293</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip150</td>
+<td style="text-align: center;">739.66855 Da 655.37 s</td>
+<td style="text-align: center;">28.19632</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9847677</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip168</td>
+<td style="text-align: center;">719.65735 Da 736.67 s</td>
+<td style="text-align: center;">28.06929</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9840061</td>
+<td style="text-align: center;">22</td>
+<td style="text-align: center;">12.28</td>
+<td style="text-align: center;">720.6646</td>
+<td style="text-align: center;">CE_22:3_</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip975</td>
+<td style="text-align: center;">811.60840 Da 488.44 s</td>
+<td style="text-align: center;">28.06530</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9832445</td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">8.14</td>
+<td style="text-align: center;">812.6155</td>
+<td style="text-align: center;">PC_18:0_20:3_</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip1056</td>
+<td style="text-align: center;">594.52143 Da 530.21 s</td>
+<td style="text-align: center;">28.04827</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9824829</td>
+<td style="text-align: center;">24</td>
+<td style="text-align: center;">8.84</td>
+<td style="text-align: center;">612.5557</td>
+<td style="text-align: center;">DG_18:1_16:0_</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip877</td>
+<td style="text-align: center;">358.27234 Da 350.66 s</td>
+<td style="text-align: center;">27.96176</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9817212</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip1073</td>
+<td style="text-align: center;">629.60967 Da 565.61 s</td>
+<td style="text-align: center;">27.93061</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9809596</td>
+<td style="text-align: center;">26</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip151</td>
+<td style="text-align: center;">744.62932 Da 655.38 s</td>
+<td style="text-align: center;">27.44841</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9801980</td>
+<td style="text-align: center;">27</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip588</td>
+<td style="text-align: center;">241.11353 Da 16.70 s</td>
+<td style="text-align: center;">27.28486</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9794364</td>
+<td style="text-align: center;">28</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip1306</td>
+<td style="text-align: center;">721.67309 Da 756.30 s</td>
+<td style="text-align: center;">27.24942</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9786748</td>
+<td style="text-align: center;">29</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip1129</td>
+<td style="text-align: center;">743.64427 Da 598.46 s</td>
+<td style="text-align: center;">27.06354</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9779132</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip476</td>
+<td style="text-align: center;">336.22778 Da 8.98 s</td>
+<td style="text-align: center;">26.92656</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9771516</td>
+<td style="text-align: center;">31</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip968</td>
+<td style="text-align: center;">700.40220 Da 486.50 s</td>
+<td style="text-align: center;">26.82480</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9763899</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip1188</td>
+<td style="text-align: center;">696.58387 Da 694.97 s</td>
+<td style="text-align: center;">26.80414</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9756283</td>
+<td style="text-align: center;">33</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip138</td>
+<td style="text-align: center;">684.61050 Da 594.01 s</td>
+<td style="text-align: center;">26.70961</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9748667</td>
+<td style="text-align: center;">34</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip156</td>
+<td style="text-align: center;">727.65058 Da 672.95 s</td>
+<td style="text-align: center;">26.56880</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9741051</td>
+<td style="text-align: center;">35</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip160</td>
+<td style="text-align: center;">708.52402 Da 683.92 s</td>
+<td style="text-align: center;">26.54682</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9733435</td>
+<td style="text-align: center;">36</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip1170</td>
+<td style="text-align: center;">800.68851 Da 661.21 s</td>
+<td style="text-align: center;">26.53826</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9725819</td>
+<td style="text-align: center;">37</td>
+<td style="text-align: center;">11.02</td>
+<td style="text-align: center;">818.7223</td>
+<td style="text-align: center;">TG_12:0_18:2_18:1_</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip1326</td>
+<td style="text-align: center;">709.67325 Da 763.96 s</td>
+<td style="text-align: center;">26.49566</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9718203</td>
+<td style="text-align: center;">38</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip278</td>
+<td style="text-align: center;">701.85641 Da 7.61 s</td>
+<td style="text-align: center;">26.34771</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9710586</td>
+<td style="text-align: center;">39</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip289</td>
+<td style="text-align: center;">769.84342 Da 7.58 s</td>
+<td style="text-align: center;">26.02907</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9702970</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip988</td>
+<td style="text-align: center;">795.61316 Da 493.39 s</td>
+<td style="text-align: center;">25.98743</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9695354</td>
+<td style="text-align: center;">41</td>
+<td style="text-align: center;">8.22</td>
+<td style="text-align: center;">796.6204</td>
+<td style="text-align: center;">PC_O-38:4_</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip1060</td>
+<td style="text-align: center;">528.45396 Da 540.40 s</td>
+<td style="text-align: center;">25.94186</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9687738</td>
+<td style="text-align: center;">42</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip979</td>
+<td style="text-align: center;">769.59688 Da 491.80 s</td>
+<td style="text-align: center;">25.85975</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9680122</td>
+<td style="text-align: center;">43</td>
+<td style="text-align: center;">8.20</td>
+<td style="text-align: center;">770.6042</td>
+<td style="text-align: center;">PC_O-36:3_</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip1299</td>
+<td style="text-align: center;">550.49577 Da 748.14 s</td>
+<td style="text-align: center;">25.79181</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9672506</td>
+<td style="text-align: center;">44</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip239</td>
+<td style="text-align: center;">324.22762 Da 7.67 s</td>
+<td style="text-align: center;">25.78765</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9664890</td>
+<td style="text-align: center;">45</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip1323</td>
+<td style="text-align: center;">368.34417 Da 763.55 s</td>
+<td style="text-align: center;">25.64019</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9657273</td>
+<td style="text-align: center;">46</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip1344</td>
+<td style="text-align: center;">683.65440 Da 777.67 s</td>
+<td style="text-align: center;">25.63097</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9649657</td>
+<td style="text-align: center;">47</td>
+<td style="text-align: center;">12.96</td>
+<td style="text-align: center;">684.6617</td>
+<td style="text-align: center;">CE_19:0_</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip1097</td>
+<td style="text-align: center;">749.63212 Da 582.51 s</td>
+<td style="text-align: center;">25.59916</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9642041</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip149</td>
+<td style="text-align: center;">669.62630 Da 651.73 s</td>
+<td style="text-align: center;">25.57982</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9634425</td>
+<td style="text-align: center;">49</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip1286</td>
+<td style="text-align: center;">405.32107 Da 735.21 s</td>
+<td style="text-align: center;">25.57603</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9626809</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip1292</td>
+<td style="text-align: center;">382.35980 Da 743.04 s</td>
+<td style="text-align: center;">25.52788</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9619193</td>
+<td style="text-align: center;">51</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip879</td>
+<td style="text-align: center;">352.25904 Da 350.34 s</td>
+<td style="text-align: center;">25.50738</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9611577</td>
+<td style="text-align: center;">52</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip909</td>
+<td style="text-align: center;">807.57707 Da 377.94 s</td>
+<td style="text-align: center;">25.46218</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9603960</td>
+<td style="text-align: center;">53</td>
+<td style="text-align: center;">6.30</td>
+<td style="text-align: center;">808.5843</td>
+<td style="text-align: center;">PC_18:1_20:4_</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip172</td>
+<td style="text-align: center;">653.61062 Da 745.17 s</td>
+<td style="text-align: center;">25.40607</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9596344</td>
+<td style="text-align: center;">54</td>
+<td style="text-align: center;">12.42</td>
+<td style="text-align: center;">654.6179</td>
+<td style="text-align: center;">CE_17:1_</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip527</td>
+<td style="text-align: center;">380.29026 Da 14.43 s</td>
+<td style="text-align: center;">25.35304</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9588728</td>
+<td style="text-align: center;">55</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip347</td>
+<td style="text-align: center;">600.46432 Da 9.19 s</td>
+<td style="text-align: center;">25.26247</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9581112</td>
+<td style="text-align: center;">56</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip30</td>
+<td style="text-align: center;">302.22240 Da 132.01 s</td>
+<td style="text-align: center;">25.23786</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9573496</td>
+<td style="text-align: center;">57</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip1308</td>
+<td style="text-align: center;">668.62985 Da 763.91 s</td>
+<td style="text-align: center;">25.19967</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9565880</td>
+<td style="text-align: center;">58</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip67</td>
+<td style="text-align: center;">754.53417 Da 299.00 s</td>
+<td style="text-align: center;">25.19820</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9558264</td>
+<td style="text-align: center;">59</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lip857</td>
+<td style="text-align: center;">779.54612 Da 315.26 s</td>
+<td style="text-align: center;">25.02618</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9550647</td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">5.25</td>
+<td style="text-align: center;">780.5532</td>
+<td style="text-align: center;">PC_16:0_20:5_</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lip1182</td>
+<td style="text-align: center;">793.71523 Da 687.92 s</td>
+<td style="text-align: center;">25.01246</td>
+<td style="text-align: center;">FALSE</td>
+<td style="text-align: center;">lipidNet_Control:lipidNet_CIS:lipidNet_MS</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;">0.9543031</td>
+<td style="text-align: center;">61</td>
+<td style="text-align: center;">11.47</td>
+<td style="text-align: center;">794.7225</td>
+<td style="text-align: center;">TG_18:1_12:0_16:0_</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><br>
+</p>
+<p>An additional model is attempted utilizing all these <code>61</code> lipids in a non linear form of association with the <code>MS</code> disease severity. First a correlation plot is shown below in order to note any multi-collinearity issues that might exist.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-corrPlot-vars-model4V2" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-corrPlot-vars-model4V2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="modeling_MS_files/figure-html/fig-corrPlot-vars-model4V2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-corrPlot-vars-model4V2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;18: Correlation plot of <code>61</code> lipid variables included in <strong><em>Model 4V2</em></strong>. With the exception of the unkwown identity lipids <code>lip1172</code> and <code>lip156</code> that were previously seen, the rest of the variables are mostly positively correlated but without exhibiting high correlations i.e.&nbsp;the maximum being close to <code>85%</code> and with only <code>11</code> pairs out of the <code>1,953</code> ones having a correlation higher than <code>70%</code>; note that the data matrix contains many zeroes which also contribute to the lack of high correlations.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>When all these lipids are added into a penalized ordinal regression model, spending about <code>9</code> degrees of freedom, the value added is non significant i.e.&nbsp;<code>C-index</code> becomes <code>0.8454</code> when in <code>Model 4</code> it was <code>0.8402</code>. In addition, the calibration plot indicates good calibration but severe overestimation of the predicted probabilities for both of the ordinal regression’s probability types. Hence <code>Model 4</code> is not updated.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
